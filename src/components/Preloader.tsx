@@ -14,27 +14,29 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       animate(scope.current, { opacity: 1 }, { duration: 0 });
 
       // ── Phase 1: Logo ──────────────────────────────────────
-      // H slides in from top, green rect slides in from bottom — simultaneously
+      // H slides in from BOTTOM, green rect slides in from TOP
       await Promise.all([
-        animate(".logo-h",   { y: "0%" }, { duration: 1.05, ease: [0.22, 1, 0.36, 1] }),
-        animate(".logo-rect",{ y: "0%" }, { duration: 1.05, ease: [0.22, 1, 0.36, 1] }),
+        animate(".logo-h", { y: "0%" }, { duration: 1.05, ease: [0.22, 1, 0.36, 1] }),
+        animate(".logo-rect", { y: "0%" }, { duration: 1.05, ease: [0.22, 1, 0.36, 1] }),
       ]);
 
       // Hold logo
       await new Promise((r) => setTimeout(r, 780));
 
-      // ── Phase 2: Crossfade logo → monitor ─────────────────
-      const logoOut   = animate(".logo-wrapper",   { opacity: 0, scale: 0.9 }, { duration: 0.5, ease: "easeIn" });
-      const monitorIn = animate(".monitor-wrapper", { opacity: 1 },             { duration: 0.55, ease: "easeOut" });
-      await Promise.all([logoOut, monitorIn]);
+      // ── Phase 2: Crossfade logo → full setup (monitor + keyboard + mouse) ──
+      const logoOut = animate(".logo-wrapper", { opacity: 0, scale: 0.9 }, { duration: 0.5, ease: "easeIn" });
+      const setupIn = animate(".setup-wrapper", { opacity: 1 }, { duration: 0.55, ease: "easeOut" });
+      await Promise.all([logoOut, setupIn]);
 
-      // ── Phase 3: Draw screen outline, then fade stand/base ─
+      // ── Phase 3: Draw screen outline, then fade stand/base + keyboard + mouse ──
       await animate(
         ".screen-outline",
         { pathLength: 1, opacity: 1 },
         { duration: 1.9, ease: [0.45, 0, 0.55, 1] }
       );
       await animate(".stand-base", { opacity: 1 }, { duration: 0.4, ease: "easeOut" });
+      // Fade in keyboard and mouse
+      await animate(".peripherals", { opacity: 1 }, { duration: 0.5, ease: "easeOut" });
 
       // ── Phase 4: Type "HackerRank" ────────────────────────
       await animate(".cursor1", { opacity: 1 }, { duration: 0.15 });
@@ -62,7 +64,18 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       await new Promise((r) => setTimeout(r, 720));
       await animate(".cursor2", { opacity: 0 }, { duration: 0.2 });
 
-      // ── Exit: cinematic green wipe ─────────────────────────
+      // ── Phase 6: Zoom out to reveal the full desk setup ───
+      // Text + monitor zoom out slightly so you see the whole PC setup
+      await animate(
+        ".setup-wrapper",
+        { scale: 0.85 },
+        { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
+      );
+
+      // Hold to admire the setup
+      await new Promise((r) => setTimeout(r, 600));
+
+      // ── Exit: cinematic green wipe from the rectangle ─────
       await animate(
         ".transition-box",
         { scale: 300, backgroundColor: "#00896B" },
@@ -81,58 +94,44 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     >
       {/* ────────────────────────────────────────────────────
           PHASE 1 — HackerRank Logo
-          H slides from top + green rect slides from bottom
+          H slides from BOTTOM + green rect slides from TOP
       ──────────────────────────────────────────────────── */}
       <div className="logo-wrapper absolute inset-0 z-10 flex items-center justify-center">
-        {/*
-          Square logo box. Each half clips its own child via overflow-hidden,
-          so the H and rect slide from outside their half's bounds.
-        */}
         <div
           className="relative flex rounded-xl gap-8"
           style={{ width: "clamp(160px, 48vw, 248px)", height: "clamp(160px, 24vw, 248px)" }}
         >
-          {/* Left half — black bg + white H sliding from top */}
+          {/* Left half — black bg + white H sliding from BOTTOM */}
           <div className="flex-1 overflow-hidden">
             <motion.div
               className="logo-h w-full h-full bg-black"
-              initial={{ y: "-115%" }}
+              initial={{ y: "115%" }}
             >
-              {/* SVG H fills the full height of its half, matching the green rect */}
               <svg viewBox="0 0 60 100" width="100%" height="100%" preserveAspectRatio="none">
                 <path d="M0,0 H22 V40 H38 V0 H60 V100 H38 V60 H22 V100 H0 Z" fill="white" />
               </svg>
             </motion.div>
           </div>
 
-          {/* Right half — HackerRank green sliding from bottom */}
+          {/* Right half — HackerRank green sliding from TOP */}
           <div className="flex-1 overflow-hidden">
             <motion.div
               className="logo-rect w-full h-full bg-[#1ba94c]"
-              initial={{ y: "115%" }}
+              initial={{ y: "-115%" }}
             />
           </div>
         </div>
       </div>
 
       {/* ────────────────────────────────────────────────────
-          PHASES 2-3 — Monitor + Typing text
+          PHASES 2-6 — Full Desk Setup (Monitor + Keyboard + Mouse)
       ──────────────────────────────────────────────────── */}
-      <div className="monitor-wrapper opacity-0 flex flex-col items-center">
-        {/*
-          Single relative box: the SVG draws the full monitor shape
-          while the text div is absolutely positioned at the visual
-          centre of the screen rectangle inside the SVG.
-
-          SVG viewBox: 0 0 700 520
-          Screen rect: x=26 y=14 w=648 h=362  → centre (350, 195)
-          Centre as %: left = 350/700 = 50%,  top = 195/520 ≈ 37.5%
-        */}
+      <div className="setup-wrapper opacity-0 flex flex-col items-center" style={{ transformOrigin: "center center" }}>
         <div
           className="relative"
           style={{ width: "clamp(320px, 88vw, 880px)" }}
         >
-          {/* Monitor SVG */}
+          {/* Monitor + Stand SVG */}
           <svg viewBox="0 0 700 520" className="w-full" fill="none">
             {/* Screen outline — drawn via pathLength */}
             <motion.rect
@@ -217,6 +216,62 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
             </div>
           </div>
         </div>
+
+        {/* ── Keyboard + Mouse (peripherals) ─────────────── */}
+        <motion.div
+          className="peripherals flex items-start justify-center gap-8 mt-4"
+          initial={{ opacity: 0 }}
+          style={{ width: "clamp(280px, 70vw, 700px)" }}
+        >
+          {/* Keyboard SVG */}
+          <svg viewBox="0 0 400 120" className="w-3/4" fill="none">
+            {/* Keyboard body */}
+            <rect x="10" y="10" width="380" height="100" rx="12" stroke="white" strokeWidth="4" fill="none" />
+            {/* Row 1 */}
+            <rect x="24" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="58" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="92" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="126" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="160" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="194" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="228" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="262" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="296" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="330" y="22" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="364" y="22" width="24" height="18" rx="3" stroke="white" strokeWidth="2" />
+            {/* Row 2 */}
+            <rect x="30" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="64" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="98" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="132" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="166" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="200" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="234" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="268" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="302" y="46" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="336" y="46" width="50" height="18" rx="3" stroke="white" strokeWidth="2" />
+            {/* Row 3 */}
+            <rect x="40" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="74" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="108" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="142" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="176" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="210" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="244" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="278" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="312" y="70" width="28" height="18" rx="3" stroke="white" strokeWidth="2" />
+            <rect x="346" y="70" width="40" height="18" rx="3" stroke="white" strokeWidth="2" />
+            {/* Spacebar */}
+            <rect x="100" y="94" width="200" height="14" rx="5" stroke="white" strokeWidth="2" />
+          </svg>
+
+          {/* Mouse SVG */}
+          <svg viewBox="0 0 60 100" className="w-[12%] mt-1" fill="none">
+            <rect x="5" y="5" width="50" height="90" rx="25" stroke="white" strokeWidth="4" />
+            <line x1="30" y1="5" x2="30" y2="40" stroke="white" strokeWidth="2" />
+            <rect x="26" y="15" width="8" height="16" rx="4" stroke="white" strokeWidth="2" />
+          </svg>
+        </motion.div>
       </div>
 
       {/* Screen-wipe burst origin */}

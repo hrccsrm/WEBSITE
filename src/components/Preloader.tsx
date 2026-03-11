@@ -89,21 +89,19 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
           so the H and rect slide from outside their half's bounds.
         */}
         <div
-          className="relative flex rounded-xl"
-          style={{ width: "clamp(160px, 24vw, 248px)", height: "clamp(160px, 24vw, 248px)" }}
+          className="relative flex rounded-xl gap-8"
+          style={{ width: "clamp(160px, 48vw, 248px)", height: "clamp(160px, 24vw, 248px)" }}
         >
           {/* Left half — black bg + white H sliding from top */}
           <div className="flex-1 overflow-hidden">
             <motion.div
-              className="logo-h w-full h-full bg-black flex items-center justify-center"
+              className="logo-h w-full h-full bg-black"
               initial={{ y: "-115%" }}
             >
-              <span
-                className="text-white font-black select-none leading-none"
-                style={{ fontSize: "clamp(76px, 11.5vw, 122px)" }}
-              >
-                H
-              </span>
+              {/* SVG H fills the full height of its half, matching the green rect */}
+              <svg viewBox="0 0 60 100" width="100%" height="100%" preserveAspectRatio="none">
+                <path d="M0,0 H22 V40 H38 V0 H60 V100 H38 V60 H22 V100 H0 Z" fill="white" />
+              </svg>
             </motion.div>
           </div>
 
@@ -132,7 +130,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
         */}
         <div
           className="relative"
-          style={{ width: "clamp(300px, 80vw, 700px)" }}
+          style={{ width: "clamp(320px, 88vw, 880px)" }}
         >
           {/* Monitor SVG */}
           <svg viewBox="0 0 700 520" className="w-full" fill="none">
@@ -172,14 +170,14 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               top: "37.5%",
               left: "50%",
               transform: "translate(-50%, -50%)",
-              width: "70%",
+              width: "85%",
             }}
           >
             <div className="flex flex-col items-center font-bold tracking-tight leading-none">
               {/* Line 1 — HackerRank */}
               <div
                 className="flex items-center justify-center"
-                style={{ height: "clamp(36px, 5.8vw, 66px)" }}
+                style={{ height: "clamp(36px, 9.5vw, 100px)" }}
               >
                 <div
                   ref={line1Ref}
@@ -187,20 +185,20 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                 >
                   <span
                     className="text-white"
-                    style={{ fontSize: "clamp(22px, 4vw, 48px)" }}
+                    style={{ fontSize: "clamp(28px, 7.5vw, 82px)" }}
                   >
                     HackerRank
                   </span>
                 </div>
-                <div className="cursor1 w-0.75 h-[66%] bg-[#2ec866] ml-1.5 opacity-0 rounded-full shrink-0" />
+                <div className="cursor1 bg-[#2ec866] ml-1.5 opacity-0 shrink-0" style={{ width: "clamp(17px, 4.5vw, 50px)", height: "clamp(28px, 7.5vw, 82px)" }} />
               </div>
 
               {/* Line 2 — CampusCrew */}
               <div
                 className="flex items-center justify-center"
                 style={{
-                  height: "clamp(36px, 5.8vw, 66px)",
-                  marginTop: "clamp(3px, 0.4vw, 7px)",
+                  height: "clamp(36px, 9.5vw, 100px)",
+                  marginTop: "clamp(6px, 0.8vw, 14px)",
                 }}
               >
                 <div
@@ -209,12 +207,12 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                 >
                   <span
                     className="text-[#2ec866]"
-                    style={{ fontSize: "clamp(22px, 4vw, 48px)" }}
+                    style={{ fontSize: "clamp(28px, 7.5vw, 82px)" }}
                   >
                     CampusCrew
                   </span>
                 </div>
-                <div className="cursor2 w-0.75 h-[66%] bg-[#2ec866] ml-1.5 opacity-0 rounded-full shrink-0" />
+                <div className="cursor2 bg-[#2ec866] ml-1.5 opacity-0 shrink-0" style={{ width: "clamp(17px, 4.5vw, 50px)", height: "clamp(28px, 7.5vw, 82px)" }} />
               </div>
             </div>
           </div>

@@ -28,19 +28,19 @@ interface CrewMember {
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 const presidentAndVPs: CrewMember[] = [
-  { name: "Arnav Puggal",  role: "President",      image: Arnav,   github: "#", linkedin: "#" },
-  { name: "Ayush Sharma",  role: "Vice President",  image: Ayush,   github: "#", linkedin: "#" },
-  { name: "Vishesh Jhabak",role: "Vice President",  image: Vishesh, github: "#", linkedin: "#" },
-  { name: "Aryan Gupta",   role: "Vice President",  image: Aryan,   github: "#", linkedin: "#" },
+  { name: "Arnav Puggal", role: "President", image: Arnav, github: "#", linkedin: "#" },
+  { name: "Ayush Sharma", role: "Vice President", image: Ayush, github: "#", linkedin: "#" },
+  { name: "Vishesh Jhabak", role: "Vice President", image: Vishesh, github: "#", linkedin: "#" },
+  { name: "Aryan Gupta", role: "Vice President", image: Aryan, github: "#", linkedin: "#" },
 ];
 
 const leads: CrewMember[] = [
-  { name: "Anish Mall",    role: "Technical Lead",  image: Anish,   github: "#", linkedin: "#" },
-  { name: "Aashi Soni",    role: "Technical Lead",  image: Aashi,   github: "#", linkedin: "#" },
-  { name: "Saii",          role: "Creatives Lead",  image: Saii,    github: "#", linkedin: "#" },
-  { name: "Purva Jain",    role: "Creatives Lead",  image: Purva,   github: "#", linkedin: "#" },
-  { name: "Nischay Naman", role: "Corporate Lead",  image: Nischay, github: "#", linkedin: "#" },
-  { name: "Ranvir Singh",  role: "Corporate Lead",  image: Ranvir,  github: "#", linkedin: "#" },
+  { name: "Anish Mall", role: "Technical Lead", image: Anish, github: "#", linkedin: "#" },
+  { name: "Aashi Soni", role: "Technical Lead", image: Aashi, github: "#", linkedin: "#" },
+  { name: "Saii", role: "Creatives Lead", image: Saii, github: "#", linkedin: "#" },
+  { name: "Purva Jain", role: "Creatives Lead", image: Purva, github: "#", linkedin: "#" },
+  { name: "Nischay Naman", role: "Corporate Lead", image: Nischay, github: "#", linkedin: "#" },
+  { name: "Ranvir Singh", role: "Corporate Lead", image: Ranvir, github: "#", linkedin: "#" },
 ];
 
 // ─── Icons ─────────────────────────────────────────────────────────────────────
@@ -149,12 +149,12 @@ function CrewCard({ member }: { member: CrewMember }) {
 // ─── Section ───────────────────────────────────────────────────────────────────
 export default function MeetTheCrew() {
   const containerRef = useRef<HTMLDivElement>(null);
-  const leadsRowRef  = useRef<HTMLDivElement>(null);
+  const leadsRowRef = useRef<HTMLDivElement>(null);
 
   // All animation is driven from these two motion values.
   // `prog` is 0→1 as the 300vh section scrolls through.
   // `leadsX` is the px translation of the leads strip.
-  const prog   = useMotionValue(0);
+  const prog = useMotionValue(0);
   const leadsX = useMotionValue(0);
 
   // ── rAF polling loop ─────────────────────────────────────────────────────────
@@ -169,7 +169,7 @@ export default function MeetTheCrew() {
 
       const el = containerRef.current;
       if (el) {
-        const rect        = el.getBoundingClientRect();
+        const rect = el.getBoundingClientRect();
         const totalTravel = el.offsetHeight - window.innerHeight;
 
         if (totalTravel > 0) {
@@ -200,14 +200,14 @@ export default function MeetTheCrew() {
   // 0.40–0.55 : crossfade pres → leads
   // 0.55–0.97 : leads strip scrolls left
 
-  const presOpacity          = useTransform(prog, [0.40, 0.53], [1, 0]);
-  const leadsOpacity         = useTransform(prog, [0.44, 0.57], [0, 1]);
-  const presSubtitleOpacity  = useTransform(prog, [0.40, 0.53], [1, 0]);
+  const presOpacity = useTransform(prog, [0.40, 0.53], [1, 0]);
+  const leadsOpacity = useTransform(prog, [0.44, 0.57], [0, 1]);
+  const presSubtitleOpacity = useTransform(prog, [0.40, 0.53], [1, 0]);
   const leadsSubtitleOpacity = useTransform(prog, [0.44, 0.57], [0, 1]);
 
   // Progress pill widths & opacities
-  const dot1Width   = useTransform(prog, [0.0, 0.5], [28, 8]);
-  const dot2Width   = useTransform(prog, [0.5, 1.0], [8, 28]);
+  const dot1Width = useTransform(prog, [0.0, 0.5], [28, 8]);
+  const dot2Width = useTransform(prog, [0.5, 1.0], [8, 28]);
   const dot1Opacity = useTransform(prog, [0.4, 0.6], [1, 0.3]);
   const dot2Opacity = useTransform(prog, [0.4, 0.6], [0.3, 1]);
 

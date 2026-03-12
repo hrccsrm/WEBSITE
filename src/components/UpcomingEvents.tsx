@@ -85,7 +85,9 @@ export default function UpcomingEvents() {
           UPCOMING EVENTS
         </motion.h2>
 
-        
+        {/* Spacer after title */}
+        <div className="h-12"></div>
+
         {/* Event Card */}
         <motion.div
           className="bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-[1000px]"

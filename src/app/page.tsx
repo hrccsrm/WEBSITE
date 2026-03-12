@@ -55,6 +55,9 @@ export default function Home() {
           {/* Upcoming Events */}
           <UpcomingEvents />
 
+          {/* Spacer before Footer */}
+          <div className="h-32"></div>
+
           {/* Footer */}
           <Footer />
         </SmoothScroll>

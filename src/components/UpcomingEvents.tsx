@@ -4,8 +4,10 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Image, { StaticImageData } from "next/image";
 
-import eventWomenTechies from "@/assets/event-women-techies.png";
-import eventHackathon from "@/assets/event-hackathon.png";
+import clubStart from "@/assets/club_start.jpeg";
+import codathon from "@/assets/codathon.jpeg";
+import techtalk from "@/assets/techtalk.jpeg";
+import aprilhackathon from "@/assets/aprilhackathon.jpeg";
 
 interface EventItem {
   id: string;
@@ -19,38 +21,38 @@ interface EventItem {
 
 const events: EventItem[] = [
   {
-    id: "women-techies",
-    title: "Women\nTechies",
+    id: "club-launch",
+    title: "Club\nLaunch",
     year: "2024",
-    description: "Empowering women in technology through workshops, talks, and networking sessions.",
-    images: [eventWomenTechies, eventHackathon],
+    description: "In September 2024, we officially kicked things off! Our inaugural launch event brought together passionate minds and set the stage for everything our club aims to achieve. It was an incredible session filled with networking, roadmap reveals, and our vision for the future of technology and collaboration on campus.",
+    images: [clubStart],
     titleColor: "#E8706A",
     yearColor: "#05C770",
   },
   {
-    id: "devjams",
-    title: "Dev\nJams",
+    id: "online-codethon",
+    title: "Online\nCodethon",
     year: "2024",
-    description: "A developer festival celebrating open source, collaboration and innovative coding.",
-    images: [eventHackathon, eventWomenTechies],
+    description: "November saw our community log on and lock in for an intense Online Codethon. Participants tackled complex algorithmic challenges, built innovative solutions from scratch, and raced against the clock. We saw incredible talent and problem-solving skills on display from all our participants.",
+    images: [codathon],
     titleColor: "#4A90D9",
     yearColor: "#F5A623",
   },
   {
-    id: "hexathon",
-    title: "Hexa\nthon",
+    id: "tech-talk",
+    title: "Tech\nTalk",
     year: "2024",
-    description: "Our flagship 36-hour hackathon bringing together the brightest minds to build and innovate.",
-    images: [eventWomenTechies, eventHackathon],
+    description: "Get ready to dive deep into the latest industry trends! Join us on March 14th for an engaging Tech Talk featuring [Insert Speaker Name/Topic]. Whether you are a beginner looking to find your footing or an experienced developer wanting to stay ahead of the curve, this session will provide valuable insights, Q&A opportunities, and a chance to network with peers.",
+    images: [techtalk],
     titleColor: "#F5A623",
     yearColor: "#E8706A",
   },
   {
-    id: "ctf",
-    title: "Capture\nThe Flag",
+    id: "april-hackathon",
+    title: "April\nHackathon",
     year: "2024",
-    description: "A cybersecurity competition testing skills in reverse engineering, cryptography and more.",
-    images: [eventHackathon, eventWomenTechies],
+    description: "The ultimate test of creativity and endurance is here. Our flagship April Hackathon is just around the corner! Form your teams, brainstorm your wildest ideas, and get ready for [Insert Number] hours of non-stop building. With exciting tracks, incredible prizes, and mentorship from industry pros, this is the event you don't want to miss. Registration opens soon!",
+    images: [aprilhackathon],
     titleColor: "#05C770",
     yearColor: "#4A90D9",
   },
@@ -63,16 +65,15 @@ export default function UpcomingEvents() {
   return (
     <section
       id="events"
-      className="py-20 px-4 md:px-8 overflow-hidden w-full flex flex-col items-center justify-center"
+      className="pt-8 px-4 md:px-8 overflow-hidden w-full flex flex-col items-center justify-center"
       style={{ background: "transparent" }}
     >
       <div className="relative z-10 max-w-[1100px] w-full flex flex-col items-center">
         {/* Title */}
         <motion.h2
-          className="text-center font-black tracking-tight mb-14 w-full"
+          className="text-center font-black tracking-tight w-full"
           style={{
             fontSize: "clamp(2.5rem, 5vw, 4rem)",
-            fontStyle: "italic",
             color: "#ffffff",
             fontFamily: "'Outfit', sans-serif",
           }}
@@ -81,9 +82,10 @@ export default function UpcomingEvents() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7 }}
         >
-          EVENTS
+          UPCOMING EVENTS
         </motion.h2>
 
+        
         {/* Event Card */}
         <motion.div
           className="bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-[1000px]"
@@ -99,47 +101,25 @@ export default function UpcomingEvents() {
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
               transition={{ duration: 0.3 }}
-              className="grid grid-cols-1 md:grid-cols-[1fr_1.5fr] min-h-[320px]"
+              className="flex flex-col lg:flex-row items-stretch justify-between min-h-[400px] gap-0"
             >
-              {/* Left — Event Title */}
-              <div className="p-8 md:p-10 flex flex-col justify-center">
-                <h3
-                  className="font-black leading-[0.95] tracking-tight whitespace-pre-line"
-                  style={{
-                    fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                    fontStyle: "italic",
-                    fontFamily: "'Outfit', sans-serif",
-                  }}
-                >
-                  <span style={{ color: activeEvent.titleColor }}>
-                    {activeEvent.title.split("\n")[0]}
-                  </span>{" "}
-                  <span style={{ color: activeEvent.yearColor, fontSize: "0.6em" }}>
-                    {activeEvent.year.slice(2)}
-                  </span>
-                  <br />
-                  <span style={{ color: activeEvent.titleColor }}>
-                    {activeEvent.title.split("\n")[1]}
-                  </span>{" "}
-                  <span style={{ color: activeEvent.yearColor, fontSize: "0.6em" }}>
-                    {activeEvent.year.slice(0, 2)}
-                  </span>
-                </h3>
+              {/* Left — Event Description */}
+              <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center lg:items-start items-center text-center lg:text-left">
+                <p className="text-gray-700 text-lg leading-relaxed max-w-lg">
+                  {activeEvent.description}
+                </p>
               </div>
 
               {/* Right — Event Photos */}
-              <div className="grid grid-cols-2 gap-1 p-2 md:p-3">
-                {activeEvent.images.map((img, i) => (
-                  <div key={i} className="relative rounded-xl overflow-hidden aspect-[4/3]">
-                    <Image
-                      src={img}
-                      alt={`${activeEvent.id} photo ${i + 1}`}
-                      fill
-                      className="object-cover"
-                      sizes="(max-width: 768px) 50vw, 25vw"
-                    />
-                  </div>
-                ))}
+              <div className="flex-1 lg:flex-initial flex justify-center items-center p-8 lg:p-12">
+                <div className="relative rounded-xl overflow-hidden w-80 h-60 shadow-lg">
+                  <Image
+                    src={activeEvent.images[0]}
+                    alt={`${activeEvent.id} photo`}
+                    fill
+                    className="object-cover"
+                  />
+                </div>
               </div>
             </motion.div>
           </AnimatePresence>
@@ -179,13 +159,13 @@ export default function UpcomingEvents() {
                     fontFamily: "'Outfit', sans-serif",
                   }}
                 >
-                  {event.id === "women-techies"
-                    ? "Women\nTechies"
-                    : event.id === "devjams"
-                    ? "DevJams"
-                    : event.id === "hexathon"
-                    ? "Hexathon"
-                    : "CTF"}
+                  {event.id === "club-launch"
+                    ? "Club\nLaunch"
+                    : event.id === "online-codethon"
+                    ? "Online\nCodethon"
+                    : event.id === "tech-talk"
+                    ? "Tech\nTalk"
+                    : "April\nHackathon"}
                 </span>
               </button>
             ))}

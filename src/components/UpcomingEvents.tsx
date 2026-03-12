@@ -64,7 +64,7 @@ export default function UpcomingEvents() {
     <section
       id="events"
       className="py-20 px-4 md:px-8 overflow-hidden w-full flex flex-col items-center justify-center"
-      style={{ background: "#05C770" }}
+      style={{ background: "transparent" }}
     >
       <div className="relative z-10 max-w-[1100px] w-full flex flex-col items-center">
         {/* Title */}
@@ -73,7 +73,7 @@ export default function UpcomingEvents() {
           style={{
             fontSize: "clamp(2.5rem, 5vw, 4rem)",
             fontStyle: "italic",
-            color: "#0a0a0a",
+            color: "#ffffff",
             fontFamily: "'Outfit', sans-serif",
           }}
           initial={{ opacity: 0, y: 30 }}
@@ -155,7 +155,7 @@ export default function UpcomingEvents() {
         >
           <div className="relative flex items-center justify-between">
             {/* Horizontal line */}
-            <div className="absolute top-3 left-0 right-0 h-[2px] bg-[#0a0a0a]/30" />
+            <div className="absolute top-3 left-0 right-0 h-[2px] bg-white/20" />
 
             {events.map((event, i) => (
               <button
@@ -167,15 +167,15 @@ export default function UpcomingEvents() {
                 <div
                   className="w-6 h-6 rounded-md border-2 transition-all duration-300"
                   style={{
-                    borderColor: activeIndex === i ? "#0a0a0a" : "rgba(10,10,10,0.3)",
-                    background: activeIndex === i ? "#0a0a0a" : "transparent",
+                    borderColor: activeIndex === i ? "#05C770" : "rgba(255,255,255,0.25)",
+                    background: activeIndex === i ? "#05C770" : "transparent",
                   }}
                 />
                 {/* Label */}
                 <span
                   className="text-sm md:text-base font-semibold transition-colors duration-300 whitespace-nowrap"
                   style={{
-                    color: activeIndex === i ? "#0a0a0a" : "rgba(10,10,10,0.5)",
+                    color: activeIndex === i ? "#ffffff" : "rgba(255,255,255,0.45)",
                     fontFamily: "'Outfit', sans-serif",
                   }}
                 >

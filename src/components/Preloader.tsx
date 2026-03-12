@@ -23,22 +23,12 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       // Hold logo
       await new Promise((r) => setTimeout(r, 780));
 
-      // ── Phase 2: Crossfade logo → full setup (monitor + keyboard + mouse) ──
+      // ── Phase 2: Crossfade logo → setup (only text visible, no monitor chrome yet) ──
       const logoOut = animate(".logo-wrapper", { opacity: 0, scale: 0.9 }, { duration: 0.5, ease: "easeIn" });
       const setupIn = animate(".setup-wrapper", { opacity: 1 }, { duration: 0.55, ease: "easeOut" });
       await Promise.all([logoOut, setupIn]);
 
-      // ── Phase 3: Draw screen outline, then fade stand/base + keyboard + mouse ──
-      await animate(
-        ".screen-outline",
-        { pathLength: 1, opacity: 1 },
-        { duration: 1.9, ease: [0.45, 0, 0.55, 1] }
-      );
-      await animate(".stand-base", { opacity: 1 }, { duration: 0.4, ease: "easeOut" });
-      // Fade in keyboard and mouse
-      await animate(".peripherals", { opacity: 1 }, { duration: 0.5, ease: "easeOut" });
-
-      // ── Phase 4: Type "HackerRank" ────────────────────────
+      // ── Phase 3: Type "HackerRank" ────────────────────────
       await animate(".cursor1", { opacity: 1 }, { duration: 0.15 });
       if (line1Ref.current) {
         await animate(
@@ -48,7 +38,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
         );
       }
 
-      // ── Phase 5: Type "CampusCrew" ────────────────────────
+      // ── Phase 4: Type "CampusCrew" ────────────────────────
       await animate(".cursor1", { opacity: 0 }, { duration: 0.12 });
       await new Promise((r) => setTimeout(r, 60));
       await animate(".cursor2", { opacity: 1 }, { duration: 0.12 });
@@ -64,13 +54,14 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       await new Promise((r) => setTimeout(r, 720));
       await animate(".cursor2", { opacity: 0 }, { duration: 0.2 });
 
-      // ── Phase 6: Zoom out to reveal the full desk setup ───
-      // Text + monitor zoom out slightly so you see the whole PC setup
-      await animate(
-        ".setup-wrapper",
-        { scale: 0.7 },
-        { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
-      );
+      // ── Phase 5: Reveal monitor chrome + keyboard, then zoom out ──
+      // Fade in monitor frame, stand, and peripherals simultaneously with zoom out
+      await Promise.all([
+        animate(".screen-outline", { pathLength: 1, opacity: 1 }, { duration: 0.6, ease: "easeOut" }),
+        animate(".stand-base", { opacity: 1 }, { duration: 0.6, ease: "easeOut" }),
+        animate(".peripherals", { opacity: 1 }, { duration: 0.6, ease: "easeOut" }),
+        animate(".setup-wrapper", { scale: 0.7 }, { duration: 0.8, ease: [0.22, 1, 0.36, 1] }),
+      ]);
 
       // Hold to admire the setup
       await new Promise((r) => setTimeout(r, 600));

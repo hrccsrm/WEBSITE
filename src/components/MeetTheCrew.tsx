@@ -216,7 +216,7 @@ export default function MeetTheCrew() {
       ref={containerRef}
       id="team"
       className="relative"
-      style={{ height: "300vh", pointerEvents: "none" }}
+      style={{ height: "300vh", pointerEvents: "auto" }}
     >
       {/* Sticky viewport-pinned panel */}
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col items-center justify-center">
@@ -243,34 +243,28 @@ export default function MeetTheCrew() {
           </span>
           <h2
             className="font-black text-white"
-            style={{ fontSize: "clamp(2rem, 5vw, 4rem)", fontStyle: "italic", lineHeight: 1.1 }}
+            style={{ fontSize: "clamp(2rem, 5vw, 4rem)", lineHeight: 1.1 }}
           >
             Meet the <span style={{ color: "#05C770" }}>Crew</span>
           </h2>
 
           {/* Dynamic subtitle fader */}
-          <div className="relative mt-3 h-6">
+          <div className="relative mt-4 h-8">
             <motion.div
               className="absolute inset-0 flex items-center justify-center"
               style={{ opacity: presSubtitleOpacity }}
             >
-              <span
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
-                style={{ background: "rgba(5,199,112,0.15)", color: "#05C770", border: "1px solid rgba(5,199,112,0.35)" }}
-              >
-                ✦ Presidents &amp; Vice Presidents
-              </span>
+              <h3 className="font-black text-white" style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)", lineHeight: 1 }}>
+                <span style={{ color: "#05C770" }}>President &amp; Vice Presidents</span>
+              </h3>
             </motion.div>
             <motion.div
               className="absolute inset-0 flex items-center justify-center"
               style={{ opacity: leadsSubtitleOpacity }}
             >
-              <span
-                className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold tracking-wider uppercase"
-                style={{ background: "rgba(255,255,255,0.07)", color: "rgba(255,255,255,0.6)", border: "1px solid rgba(255,255,255,0.12)" }}
-              >
-                ✦ Domain Leads
-              </span>
+              <h3 className="font-black text-white" style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)", lineHeight: 1 }}>
+                <span style={{ color: "#05C770" }}>Domain Leads</span>
+              </h3>
             </motion.div>
           </div>
         </motion.div>
@@ -292,35 +286,28 @@ export default function MeetTheCrew() {
             </div>
           </motion.div>
 
-          {/* ── Div 2 — Domain Leads (film-tape horizontal scroll) ── */}
-          <motion.div
-            className="absolute inset-0 flex items-center"
-            style={{ opacity: leadsOpacity }}
-          >
-            <motion.div
-              ref={leadsRowRef}
-              className="flex gap-5 px-10 items-center h-full"
-              style={{ x: leadsX }}
-            >
-              {leads.map((member) => (
-                <CrewCard key={member.name} member={member} />
-              ))}
-            </motion.div>
-          </motion.div>
+          {/* ── Div 2 — Domain Leads (moved out of sticky to avoid overlap) ── */}
+          {/* leads row removed from here to place it after the sticky panel */}
         </div>
 
-        {/* ── Progress pills ── */}
-        <div className="absolute bottom-8 flex items-center gap-2">
-          <motion.div
-            className="h-1.25 rounded-full"
-            style={{ background: "#05C770", width: dot1Width, opacity: dot1Opacity }}
-          />
-          <motion.div
-            className="h-1.25 rounded-full"
-            style={{ background: "#05C770", width: dot2Width, opacity: dot2Opacity }}
-          />
-        </div>
+        {/* sticky panel end */}
       </div>
-    </section>
+
+        {/* ── Always-visible Domain Leads (placed below the sticky panel) ── */}
+        <div className="w-full flex flex-col items-center mt-6 pointer-events-auto">
+          <div className="max-w-3xl w-full text-center mb-4">
+            <h3 className="font-black text-white" style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)", lineHeight: 1 }}>
+              <span style={{ color: "#05C770" }}>Domain Leads</span>
+            </h3>
+          </div>
+
+          <div ref={leadsRowRef} className="flex flex-wrap justify-center gap-5 px-6 md:px-10 items-center overflow-x-auto py-2">
+            {leads.map((member) => (
+              <CrewCard key={member.name} member={member} />
+            ))}
+          </div>
+        </div>
+
+      </section>
   );
 }

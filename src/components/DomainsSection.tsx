@@ -102,7 +102,6 @@ export default function DomainsSection() {
                     className="text-white font-black tracking-tight mb-3"
                     style={{
                       fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
-                      fontStyle: "italic",
                       textShadow: "2px 3px 10px rgba(0,0,0,0.7)",
                       lineHeight: 1,
                     }}
@@ -159,7 +158,6 @@ export default function DomainsSection() {
                 className="text-black font-black tracking-tight leading-none"
                 style={{
                   fontSize: "clamp(2.5rem, 5vw, 4rem)",
-                  fontStyle: "italic",
                 }}
               >
                 RECRUITMENTS

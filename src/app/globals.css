@@ -1,9 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --green-primary: #00896B;
-  --green-accent: #2ec866;
-  --green-dark: #006B54;
+  --green-primary: #05C770;
+  --green-accent: #05C770;
+  --green-dark: #05C770;
   --grid-color: rgba(255, 255, 255, 0.15);
   --grid-size: 40px;
   --background: #0a0a0a;
@@ -17,10 +17,12 @@
   --font-mono: var(--font-geist-mono);
 }
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+@layer base {
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 }
 
 html {
@@ -107,7 +109,7 @@ main section {
   background: #111;
 }
 ::-webkit-scrollbar-thumb {
-  background: #00896B;
+  background: #05C770;
   border-radius: 4px;
 }
 

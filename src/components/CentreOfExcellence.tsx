@@ -7,10 +7,10 @@ import centreImg from "@/assets/centre-of-excellence.png";
 export default function CentreOfExcellence() {
   return (
     <section
-      className="py-20 px-4 md:px-8 overflow-hidden"
-      style={{ background: "#0a0a0a" }}
+      className="relative z-10 py-20 px-4 md:px-8 overflow-hidden"
+      style={{ background: "transparent" }}
     >
-      <div className="max-w-[1100px] w-full mx-auto">
+      <div className="max-w-275 w-full mx-auto">
         {/* Title */}
         <motion.div
           className="text-center mb-10 w-full"
@@ -20,7 +20,7 @@ export default function CentreOfExcellence() {
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
           <h2
-            className="text-white font-black tracking-tight leading-tight"
+            className="text-white font-black tracking-tight leading-tight z-100"
             style={{
               fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
               fontStyle: "italic",
@@ -50,7 +50,7 @@ export default function CentreOfExcellence() {
             priority
           />
           {/* Subtle overlay gradient */}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+          <div className="absolute inset-0 bg-linear-to-t from-black/30 to-transparent" />
         </motion.div>
       </div>
     </section>

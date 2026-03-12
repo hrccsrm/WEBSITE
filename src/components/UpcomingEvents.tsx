@@ -25,7 +25,7 @@ const events: EventItem[] = [
     description: "Empowering women in technology through workshops, talks, and networking sessions.",
     images: [eventWomenTechies, eventHackathon],
     titleColor: "#E8706A",
-    yearColor: "#2ec866",
+    yearColor: "#05C770",
   },
   {
     id: "devjams",
@@ -51,7 +51,7 @@ const events: EventItem[] = [
     year: "2024",
     description: "A cybersecurity competition testing skills in reverse engineering, cryptography and more.",
     images: [eventHackathon, eventWomenTechies],
-    titleColor: "#2ec866",
+    titleColor: "#05C770",
     yearColor: "#4A90D9",
   },
 ];
@@ -64,9 +64,9 @@ export default function UpcomingEvents() {
     <section
       id="events"
       className="py-20 px-4 md:px-8 overflow-hidden w-full flex flex-col items-center justify-center"
-      style={{ background: "#2ec866" }}
+      style={{ background: "#05C770" }}
     >
-      <div className="max-w-[1100px] w-full flex flex-col items-center">
+      <div className="relative z-10 max-w-[1100px] w-full flex flex-col items-center">
         {/* Title */}
         <motion.h2
           className="text-center font-black tracking-tight mb-14 w-full"

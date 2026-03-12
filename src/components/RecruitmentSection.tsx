@@ -5,8 +5,8 @@ import { motion } from "framer-motion";
 export default function RecruitmentSection() {
   return (
     <section
-      className="py-20 px-4 md:px-8 overflow-hidden"
-      style={{ background: "#0a0a0a" }}
+      className="relative z-10 py-20 px-4 md:px-8 overflow-hidden"
+      style={{ background: "transparent" }}
     >
       <div className="max-w-[1100px] mx-auto">
         <motion.div
@@ -19,7 +19,7 @@ export default function RecruitmentSection() {
           {/* Left — Green card with "RECRUITMENTS OPEN." */}
           <div
             className="rounded-2xl p-8 md:p-10 flex flex-col justify-between min-h-[300px] relative overflow-hidden"
-            style={{ background: "#2ec866" }}
+            style={{ background: "#05C770" }}
           >
             <h2
               className="font-black tracking-tight leading-[0.95]"

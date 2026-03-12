@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
 
 /* Social link data */
 const socials = [
@@ -75,142 +73,84 @@ export default function HeroSection() {
   return (
     <section
       id="home"
-      className="relative min-h-screen flex items-center px-6 md:px-12 lg:px-20 overflow-hidden"
-      style={{ background: "#0a0a0a" }}
+      className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pointer-events-none"
     >
-      {/* ── 3D Isometric Tower (left side) ── */}
-      <motion.div
-        className="absolute left-[5%] md:left-[10%] top-1/2 -translate-y-1/2"
-        initial={{ opacity: 0, y: 40 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 0.3, duration: 1, ease: [0.22, 1, 0.36, 1] }}
-      >
-        <svg
-          width="220"
-          height="600"
-          viewBox="0 0 220 600"
-          fill="none"
-          xmlns="http://www.w3.org/2000/svg"
-          className="opacity-70 w-[140px] md:w-[220px]"
-        >
-          {/* Spire / antenna */}
-          <line x1="110" y1="0" x2="110" y2="70" stroke="rgba(255,255,255,0.35)" strokeWidth="1.5" />
+      {/* ── Centered content ── */}
+      <div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-3xl pointer-events-none">
 
-          {/* Top tier - small block (3D isometric) */}
-          {/* Front face */}
-          <polygon points="80,70 140,70 140,130 80,130" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Top face */}
-          <polygon points="80,70 110,55 170,55 140,70" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Right face */}
-          <polygon points="140,70 170,55 170,115 140,130" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-
-          {/* Second tier - medium block */}
-          {/* Front face */}
-          <polygon points="65,130 155,130 155,210 65,210" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Top face */}
-          <polygon points="65,130 100,112 190,112 155,130" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Right face */}
-          <polygon points="155,130 190,112 190,192 155,210" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-
-          {/* Third tier - HQ block */}
-          {/* Front face */}
-          <polygon points="50,210 170,210 170,310 50,310" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Top face */}
-          <polygon points="50,210 85,192 205,192 170,210" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Right face */}
-          <polygon points="170,210 205,192 205,292 170,310" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-
-          {/* HQ text on front face */}
-          <text x="135" y="270" textAnchor="middle" fill="rgba(255,255,255,0.45)" fontSize="20" fontFamily="'Outfit', sans-serif" fontWeight="600">HQ</text>
-
-          {/* Fourth tier - wider block with step */}
-          {/* Front face */}
-          <polygon points="35,310 185,310 185,390 35,390" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Top face */}
-          <polygon points="35,310 65,295 215,295 185,310" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Right face */}
-          <polygon points="185,310 215,295 215,375 185,390" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-
-          {/* Side extension on right of fourth tier */}
-          <polygon points="140,350 185,350 185,390 140,390" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
-          <polygon points="140,350 160,340 205,340 185,350" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
-          <polygon points="185,350 205,340 205,380 185,390" stroke="rgba(255,255,255,0.2)" strokeWidth="1" fill="none" />
-
-          {/* Base tier - widest block */}
-          {/* Front face */}
-          <polygon points="15,390 205,390 205,510 15,510" stroke="rgba(255,255,255,0.3)" strokeWidth="1.5" fill="none" />
-          {/* Top face */}
-          <polygon points="15,390 40,375 220,375 205,390" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
-          {/* Right face */}
-          <polygon points="205,390 220,375 220,500 205,510" stroke="rgba(255,255,255,0.25)" strokeWidth="1.5" fill="none" />
-
-          {/* Foundation block */}
-          <polygon points="5,510 215,510 215,600 5,600" stroke="rgba(255,255,255,0.2)" strokeWidth="1.5" fill="none" />
-          <polygon points="5,510 25,498 220,498 215,510" stroke="rgba(255,255,255,0.18)" strokeWidth="1" fill="none" />
-        </svg>
-
-        {/* HackerRank logo on the tower */}
-        <div className="absolute" style={{ left: "12px", top: "52%", transform: "translateY(-50%)" }}>
-          <Image
-            src={logo}
-            alt="HackerRank Campus Crew"
-            width={48}
-            height={24}
-            className="w-10 md:w-12 h-auto drop-shadow-lg"
-          />
-        </div>
-      </motion.div>
-
-      {/* ── Main Content (right side) ── */}
-      <div className="relative z-10 w-full max-w-[1400px] mx-auto flex flex-col items-end text-right pt-24 pb-16">
-        {/* Big title */}
+        {/* Badge */}
         <motion.div
-          initial={{ y: 60, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+          initial={{ opacity: 0, y: -16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
         >
-          <h1
-            className="font-black leading-none tracking-tight"
-            style={{
-              fontStyle: "italic",
-              fontFamily: "'Outfit', sans-serif",
-              fontSize: "clamp(3rem, 9vw, 8rem)",
-              color: "#E8706A",
-              textShadow: "0 4px 30px rgba(232,112,106,0.15)",
-            }}
+          <span
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium tracking-widest uppercase"
+            style={{ borderColor: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.65)", background: "rgba(255,255,255,0.06)" }}
           >
-            WE ARE
-            <br />
-            HACKERRANK
-            <br />
-            CAMPUS CREW
-          </h1>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+            HackerRank Campus Crew · SRMIST KTR
+          </span>
         </motion.div>
 
-        {/* Description text */}
-        <motion.div
-          className="mt-10 max-w-lg"
-          initial={{ y: 30, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
-          transition={{ delay: 0.6, duration: 0.8 }}
+        {/* Heading */}
+        <motion.h1
+          className="font-black leading-tight tracking-tight text-white"
+          style={{ fontSize: "clamp(2.6rem, 7vw, 6.5rem)" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
-          <p className="text-white/70 text-sm md:text-base leading-relaxed mb-4">
-            We think slightly out of the box, we believe that a club&apos;s resources must not only
-            be channeled into conducting events but also to propagate learning and teaching,
-            symbiotically.
-          </p>
-          <p className="text-white/70 text-sm md:text-base leading-relaxed">
-            That said, we conduct Flagship events such as Coding Competitions, Technical
-            Workshops and Collaborative Hackathons, and tons of insightful sessions for the
-            student community at SRMIST KTR.
-          </p>
+          We Are the
+          <br />
+          <span style={{ color: "#05C770" }}>HackerRank</span>
+          <br />
+          Campus Crew
+        </motion.h1>
+
+        {/* Sub-text */}
+        <motion.p
+          className="text-white/55 text-base md:text-lg leading-relaxed max-w-xl"
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.55, duration: 0.7 }}
+        >
+          Coding competitions, technical workshops, collaborative hackathons —
+          and a community that thinks slightly out of the box at SRMIST KTR.
+        </motion.p>
+
+        {/* CTA Buttons */}
+        <motion.div
+          className="flex items-center gap-4 mt-2"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.7, duration: 0.6 }}
+        >
+          <a
+            href="#domains"
+            className="pointer-events-auto px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300"
+            style={{ background: "#fff", color: "#0a0a0a" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#05C770"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#fff"; (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a"; }}
+          >
+            Explore
+          </a>
+          <a
+            href="#about"
+            className="pointer-events-auto px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300"
+            style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.75)", background: "rgba(255,255,255,0.06)" }}
+            onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
+            onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)"; }}
+          >
+            Learn More
+          </a>
         </motion.div>
 
-        {/* Social link icons */}
+        {/* Social icons */}
         <motion.div
-          className="mt-10 flex items-center gap-5"
-          initial={{ y: 20, opacity: 0 }}
-          animate={{ y: 0, opacity: 1 }}
+          className="flex items-center gap-5 mt-4"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.9, duration: 0.6 }}
         >
           {socials.map((social) => (
@@ -219,24 +159,29 @@ export default function HeroSection() {
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-white/50 hover:text-white transition-colors duration-300"
+              className="pointer-events-auto text-white/35 hover:text-white transition-colors duration-300"
               aria-label={social.name}
             >
               {social.icon}
             </a>
           ))}
         </motion.div>
-
-        {/* Copyright */}
-        <motion.p
-          className="mt-auto pt-16 text-white/30 text-xs tracking-wider uppercase"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-        >
-          © 2024 HACKERRANK CAMPUS CREW SRMIST KTR
-        </motion.p>
       </div>
+
+      {/* Scroll cue */}
+      <motion.div
+        className="absolute bottom-8 flex flex-col items-center gap-1.5"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.2, duration: 0.6 }}
+      >
+        <span className="text-white/30 text-[10px] tracking-[0.25em] uppercase">Scroll</span>
+        <motion.div
+          className="w-px h-8 bg-white/20"
+          animate={{ scaleY: [1, 0.3, 1] }}
+          transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
+        />
+      </motion.div>
     </section>
   );
 }

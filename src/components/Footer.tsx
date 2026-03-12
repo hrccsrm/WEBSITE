@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 
 export default function Footer() {
   return (
-    <footer id="contact">
+    <footer id="contact" className="relative z-10">
       {/* ── Top Section: CTA on green grid ───────────────── */}
       <div className="green-grid-bg py-16 px-4 md:px-8 text-center relative overflow-hidden">
         {/* Decorative stickers */}

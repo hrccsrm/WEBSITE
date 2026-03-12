@@ -54,10 +54,10 @@ export default function DomainsSection() {
   return (
     <section
       id="domains"
-      className="py-16 px-4 md:px-6 w-full flex flex-col items-center justify-center"
-      style={{ background: "#0a0a0a" }}
+      className="relative z-10 py-16 px-4 md:px-6 w-full flex flex-col items-center justify-center"
+      style={{ background: "transparent" }}
     >
-      <div className="max-w-[1400px] w-full" ref={ref}>
+      <div className="max-w-350 w-full" ref={ref}>
         {/* Domain Cards — Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:auto-rows-[280px]">
           {domains.map((domain, i) => (
@@ -82,8 +82,8 @@ export default function DomainsSection() {
               />
 
               {/* Dark overlay — heavier on the left for text readability */}
-              <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/40 to-transparent" />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
 
               {/* Subtle dot pattern */}
               <div
@@ -101,7 +101,7 @@ export default function DomainsSection() {
                   <h3
                     className="text-white font-black tracking-tight mb-3"
                     style={{
-                      fontSize: "clamp(2.2rem, 4.5vw, 3.5rem)",
+                      fontSize: "clamp(1.4rem, 2.8vw, 2.2rem)",
                       fontStyle: "italic",
                       textShadow: "2px 3px 10px rgba(0,0,0,0.7)",
                       lineHeight: 1,
@@ -119,7 +119,7 @@ export default function DomainsSection() {
                     {domain.description}
                   </p>
                 </div>
-                <button className="mt-5 self-start flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/50 backdrop-blur-sm border border-[#2ec866]/60 text-[#2ec866] text-sm font-semibold hover:bg-[#2ec866] hover:text-black transition-all duration-300 group/btn">
+                <button className="mt-5 self-start flex items-center gap-2 px-5 py-2.5 rounded-full bg-black/50 backdrop-blur-sm border border-[#05C770]/60 text-[#05C770] text-sm font-semibold hover:bg-[#05C770] hover:text-black transition-all duration-300 group/btn">
                   <svg
                     className="w-3 h-3 transition-transform group-hover/btn:translate-x-0.5"
                     viewBox="0 0 12 12"
@@ -138,7 +138,7 @@ export default function DomainsSection() {
               </div>
 
               {/* Hover glow effect */}
-              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-gradient-to-t from-[#2ec866]/10 to-transparent" />
+              <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-t from-[#05C770]/10 to-transparent" />
             </motion.div>
           ))}
         </div>
@@ -153,7 +153,7 @@ export default function DomainsSection() {
           custom={3}
         >
           {/* Left — Recruitments CTA */}
-          <div className="bg-[#2ec866] rounded-xl p-8 md:p-12 flex flex-col justify-between min-h-[200px] relative overflow-hidden group">
+          <div className="bg-[#05C770] rounded-xl p-8 md:p-12 flex flex-col justify-between min-h-50 relative overflow-hidden group">
             <div>
               <h3
                 className="text-black font-black tracking-tight leading-none"
@@ -181,7 +181,7 @@ export default function DomainsSection() {
           </div>
 
           {/* Right — Video embed */}
-          <div className="bg-black rounded-xl overflow-hidden relative min-h-[200px] border border-white/5">
+          <div className="bg-black rounded-xl overflow-hidden relative min-h-50 border border-white/5">
             <iframe
               src="https://player.vimeo.com/video/1115531421?badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 w-full h-full"

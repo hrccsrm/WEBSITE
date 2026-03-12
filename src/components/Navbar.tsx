@@ -1,86 +1,109 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import Image from "next/image";
-import logo from "@/assets/logo.png";
+import { useEffect, useRef, useState } from "react";
+import { motion } from "framer-motion";
 
 const navLinks = [
   { label: "Home", href: "#home" },
   { label: "Domains", href: "#domains" },
   { label: "Team", href: "#team" },
   { label: "Events", href: "#events" },
-  { label: "Contact Us", href: "#contact" },
 ];
 
 export default function Navbar() {
-  const [menuOpen, setMenuOpen] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [active, setActive] = useState("home");
+  const [hovered, setHovered] = useState<string | null>(null);
+  const lastY = useRef(0);
+
+  useEffect(() => {
+    const onScroll = () => {
+      const currentY = window.scrollY;
+      setVisible(currentY < lastY.current || currentY < 60);
+      lastY.current = currentY;
+
+      const ids = navLinks.map((l) => l.href.replace("#", ""));
+      for (let i = ids.length - 1; i >= 0; i--) {
+        const el = document.getElementById(ids[i]);
+        if (el && el.getBoundingClientRect().top <= 120) {
+          setActive(ids[i]);
+          break;
+        }
+      }
+    };
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   return (
-    <>
-      {/* ── Minimal Header Bar ── */}
-      <motion.header
-        initial={{ y: -60, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-        className="fixed top-0 left-0 right-0 z-[60] flex items-center justify-between px-6 md:px-10 py-4"
-        style={{ background: "#0a0a0a" }}
+    <motion.header
+      initial={{ y: -80, opacity: 0 }}
+      animate={{ y: visible ? 0 : -90, opacity: visible ? 1 : 0 }}
+      transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+      className="fixed top-6 left-1/2 -translate-x-1/2 z-50 pointer-events-auto whitespace-nowrap"
+    >
+      <nav
+        className="flex items-center gap-1 px-2 py-2 rounded-full"
+        style={{
+          background: "rgba(14, 14, 14, 0.88)",
+          border: "1px solid rgba(255,255,255,0.10)",
+          boxShadow: "0 4px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(255,255,255,0.06)",
+          backdropFilter: "blur(24px)",
+          WebkitBackdropFilter: "blur(24px)",
+        }}
       >
-        {/* Left — Logo + Name */}
-        <a href="#home" className="flex items-center gap-3 shrink-0">
-          <Image src={logo} alt="HRCC Logo" width={36} height={20} className="h-5 w-auto" />
-          <span className="text-white text-sm font-medium border border-white/30 rounded-full px-4 py-1">
-            HRCC SRM
-          </span>
-        </a>
+        {navLinks.map((link) => {
+          const id = link.href.replace("#", "");
+          const isActive = active === id;
+          const isHovered = hovered === id;
 
-        {/* Right — Menu / Close button */}
-        <button
-          onClick={() => setMenuOpen(!menuOpen)}
-          className="text-white text-sm font-medium border border-white/30 rounded-full px-5 py-1.5 hover:bg-white/10 transition-colors duration-300"
-          aria-label="Toggle menu"
+          let bg = "transparent";
+          let color = "rgba(255,255,255,0.45)";
+          if (isActive) { bg = "rgba(255,255,255,0.97)"; color = "#0a0a12"; }
+          else if (isHovered) { bg = "rgba(255,255,255,0.08)"; color = "rgba(255,255,255,0.85)"; }
+
+          return (
+            <a
+              key={id}
+              href={link.href}
+              onClick={() => setActive(id)}
+              onMouseEnter={() => setHovered(id)}
+              onMouseLeave={() => setHovered(null)}
+              className="inline-flex items-center px-5 py-2 rounded-full text-[13px] tracking-wide transition-all duration-200"
+              style={{
+                background: bg,
+                color,
+                fontWeight: isActive ? 500 : 400,
+                boxShadow: isActive ? "0 1px 12px rgba(255,255,255,0.10)" : "none",
+              }}
+            >
+              {link.label}
+            </a>
+          );
+        })}
+
+        {/* Divider */}
+        <div className="w-px h-5 mx-1.5 shrink-0 bg-white/10" />
+
+        {/* CTA */}
+        <a
+          href="#contact"
+          onMouseEnter={() => setHovered("contact")}
+          onMouseLeave={() => setHovered(null)}
+          className="inline-flex items-center px-5 py-2 rounded-full text-[13px] font-semibold tracking-wide transition-all duration-200"
+          style={{
+            background: "#05C770",
+            color: "#fff",
+            opacity: hovered === "contact" ? 0.85 : 1,
+            boxShadow:
+              hovered === "contact"
+                ? "0 0 0 1px rgba(5,199,112,0.6), 0 4px 18px rgba(5,199,112,0.4)"
+                : "0 0 0 1px rgba(5,199,112,0.35), 0 2px 10px rgba(5,199,112,0.2)",
+          }}
         >
-          {menuOpen ? "Close" : "Menu"}
-        </button>
-      </motion.header>
-
-      {/* ── Fullscreen Menu Overlay ── */}
-      <AnimatePresence>
-        {menuOpen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 0.4 }}
-            className="fixed inset-0 z-[55] flex items-start pt-24 px-6 md:px-16"
-            style={{ background: "rgba(10, 10, 10, 0.97)" }}
-          >
-            {/* Navigation Links */}
-            <nav className="flex flex-col gap-2 md:gap-3 mt-8">
-              {navLinks.map((link, i) => (
-                <motion.a
-                  key={link.label}
-                  href={link.href}
-                  onClick={() => setMenuOpen(false)}
-                  initial={{ x: -40, opacity: 0 }}
-                  animate={{ x: 0, opacity: 1 }}
-                  exit={{ x: -40, opacity: 0 }}
-                  transition={{ delay: i * 0.06, duration: 0.4, ease: [0.22, 1, 0.36, 1] }}
-                  className="text-white/60 hover:text-white font-black tracking-tight transition-colors duration-300"
-                  style={{
-                    fontSize: "clamp(2.5rem, 6vw, 4.5rem)",
-                    fontStyle: "italic",
-                    fontFamily: "'Outfit', sans-serif",
-                    lineHeight: 1.15,
-                  }}
-                >
-                  {link.label}
-                </motion.a>
-              ))}
-            </nav>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </>
+          Contact Us
+        </a>
+      </nav>
+    </motion.header>
   );
 }

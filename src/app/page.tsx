@@ -1,8 +1,9 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import Preloader from "@/components/Preloader";
+import Squares from "@/components/Squares";
 import SmoothScroll from "@/components/SmoothScroll";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
@@ -16,7 +17,7 @@ export default function Home() {
   const [isLoading, setIsLoading] = useState(true);
 
   return (
-    <main className="relative min-h-screen bg-black text-white">
+    <main className="relative min-h-screen text-white">
       <AnimatePresence mode="wait">
         {isLoading && (
           <Preloader key="preloader" onComplete={() => setIsLoading(false)} />
@@ -25,13 +26,16 @@ export default function Home() {
 
       {!isLoading && (
         <SmoothScroll>
-          {/* Green overlay for seamless handoff from preloader */}
-          <motion.div
-            className="fixed inset-0 bg-[#00896B] z-40 pointer-events-none"
-            initial={{ opacity: 1 }}
-            animate={{ opacity: 0 }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-          />
+          {/* Squares animated background */}
+          <div className="fixed inset-0 z-0">
+            <Squares
+              speed={0.1}
+              squareSize={40}
+              direction="diagonal"
+              borderColor="#5b5760"
+              hoverFillColor="#05C770"
+            />
+          </div>
 
           {/* Navbar */}
           <Navbar />

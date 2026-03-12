@@ -69,7 +69,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       // ── Exit: cinematic green wipe from the rectangle ─────
       await animate(
         ".transition-box",
-        { scale: 300, backgroundColor: "#00896B" },
+        { scale: 300, backgroundColor: "#05C770" },
         { duration: 1.4, ease: [0.76, 0, 0.24, 1] }
       );
       onComplete();
@@ -180,7 +180,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                     HackerRank
                   </span>
                 </div>
-                <div className="cursor1 bg-[#2ec866] ml-1.5 opacity-0 shrink-0" style={{ width: "clamp(17px, 4.5vw, 50px)", height: "clamp(28px, 7.5vw, 82px)" }} />
+                <div className="cursor1 bg-[#05C770] ml-1.5 opacity-0 shrink-0" style={{ width: "clamp(17px, 4.5vw, 50px)", height: "clamp(28px, 7.5vw, 82px)" }} />
               </div>
 
               {/* Line 2 — CampusCrew */}
@@ -196,13 +196,13 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
                   className="overflow-hidden whitespace-nowrap w-0 h-full flex items-center"
                 >
                   <span
-                    className="text-[#2ec866]"
+                    className="text-[#05C770]"
                     style={{ fontSize: "clamp(28px, 7.5vw, 82px)" }}
                   >
                     CampusCrew
                   </span>
                 </div>
-                <div className="cursor2 bg-[#2ec866] ml-1.5 opacity-0 shrink-0" style={{ width: "clamp(17px, 4.5vw, 50px)", height: "clamp(28px, 7.5vw, 82px)" }} />
+                <div className="cursor2 bg-[#05C770] ml-1.5 opacity-0 shrink-0" style={{ width: "clamp(17px, 4.5vw, 50px)", height: "clamp(28px, 7.5vw, 82px)" }} />
               </div>
             </div>
           </div>
@@ -266,7 +266,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       </div>
 
       {/* Screen-wipe burst origin */}
-      <div className="transition-box fixed top-1/2 left-1/2 w-8 h-8 -mt-4 -ml-4 bg-[#00896B] rounded-full scale-0 z-50 pointer-events-none" />
+      <div className="transition-box fixed top-1/2 left-1/2 w-8 h-8 -mt-4 -ml-4 bg-[#05C770] rounded-full scale-0 z-50 pointer-events-none" />
     </div>
   );
 }

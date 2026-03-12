@@ -44,7 +44,7 @@ const fadeUp = {
   visible: (i: number) => ({
     opacity: 1,
     y: 0,
-    transition: { delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] },
+    transition: { delay: i * 0.15, duration: 0.7, ease: [0.22, 1, 0.36, 1] as const },
   }),
 };
 
@@ -54,10 +54,10 @@ export default function DomainsSection() {
   return (
     <section
       id="domains"
-      className="py-16 px-4 md:px-6"
+      className="py-16 px-4 md:px-6 w-full flex flex-col items-center justify-center"
       style={{ background: "#0a0a0a" }}
     >
-      <div className="max-w-[1400px] mx-auto" ref={ref}>
+      <div className="max-w-[1400px] w-full" ref={ref}>
         {/* Domain Cards — Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:auto-rows-[280px]">
           {domains.map((domain, i) => (

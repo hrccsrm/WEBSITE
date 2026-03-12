@@ -10,7 +10,7 @@ export default function CentreOfExcellence() {
       className="py-20 px-4 md:px-8 overflow-hidden"
       style={{ background: "#0a0a0a" }}
     >
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1100px] w-full mx-auto">
         {/* Title */}
         <motion.div
           className="text-center mb-10 w-full"

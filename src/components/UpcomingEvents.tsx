@@ -63,13 +63,13 @@ export default function UpcomingEvents() {
   return (
     <section
       id="events"
-      className="py-20 px-4 md:px-8 overflow-hidden"
+      className="py-20 px-4 md:px-8 overflow-hidden w-full flex flex-col items-center justify-center"
       style={{ background: "#2ec866" }}
     >
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1100px] w-full flex flex-col items-center">
         {/* Title */}
         <motion.h2
-          className="text-center font-black tracking-tight mb-14"
+          className="text-center font-black tracking-tight mb-14 w-full"
           style={{
             fontSize: "clamp(2.5rem, 5vw, 4rem)",
             fontStyle: "italic",
@@ -86,7 +86,7 @@ export default function UpcomingEvents() {
 
         {/* Event Card */}
         <motion.div
-          className="bg-white rounded-2xl overflow-hidden shadow-2xl mx-auto max-w-[1000px]"
+          className="bg-white rounded-2xl overflow-hidden shadow-2xl w-full max-w-[1000px]"
           initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -147,7 +147,7 @@ export default function UpcomingEvents() {
 
         {/* Timeline Selector */}
         <motion.div
-          className="mt-12 max-w-[800px] mx-auto"
+          className="mt-12 w-full max-w-[800px]"
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.5 }}

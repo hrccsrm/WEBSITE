@@ -106,7 +106,7 @@ function PolaroidCard({ member, index }: { member: CrewMember; index: number }) 
 export default function MeetTheCrew() {
   return (
     <section id="team" className="green-grid-bg py-20 px-4 md:px-8 overflow-hidden">
-      <div className="max-w-[1100px] mx-auto">
+      <div className="max-w-[1100px] w-full mx-auto">
         {/* Title */}
         <motion.div
           className="text-center mb-16"

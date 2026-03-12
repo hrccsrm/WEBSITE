@@ -14,7 +14,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       animate(scope.current, { opacity: 1 }, { duration: 0 });
 
       // ── Phase 1: Logo ──────────────────────────────────────
-      // H slides in from BOTTOM, green rect slides in from TOP
+      // H slides in from TOP, green rect slides in from BOTTOM
       await Promise.all([
         animate(".logo-h", { y: "0%" }, { duration: 1.05, ease: [0.22, 1, 0.36, 1] }),
         animate(".logo-rect", { y: "0%" }, { duration: 1.05, ease: [0.22, 1, 0.36, 1] }),
@@ -68,7 +68,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       // Text + monitor zoom out slightly so you see the whole PC setup
       await animate(
         ".setup-wrapper",
-        { scale: 0.85 },
+        { scale: 0.7 },
         { duration: 0.8, ease: [0.22, 1, 0.36, 1] }
       );
 
@@ -94,30 +94,30 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
     >
       {/* ────────────────────────────────────────────────────
           PHASE 1 — HackerRank Logo
-          H slides from BOTTOM + green rect slides from TOP
+          H slides from TOP + green rect slides from BOTTOM
       ──────────────────────────────────────────────────── */}
       <div className="logo-wrapper absolute inset-0 z-10 flex items-center justify-center">
         <div
-          className="relative flex rounded-xl gap-8"
-          style={{ width: "clamp(160px, 48vw, 248px)", height: "clamp(160px, 24vw, 248px)" }}
+          className="relative flex items-center gap-8"
+          style={{ width: "clamp(160px, 48vw, 280px)" }}
         >
-          {/* Left half — black bg + white H sliding from BOTTOM */}
-          <div className="flex-1 overflow-hidden">
+          {/* Left half — black bg + white H sliding from TOP */}
+          <div className="flex-1 aspect-square overflow-hidden bg-black">
             <motion.div
-              className="logo-h w-full h-full bg-black"
-              initial={{ y: "115%" }}
+              className="logo-h w-full h-full"
+              initial={{ y: "-115%" }}
             >
-              <svg viewBox="0 0 60 100" width="100%" height="100%" preserveAspectRatio="none">
-                <path d="M0,0 H22 V40 H38 V0 H60 V100 H38 V60 H22 V100 H0 Z" fill="white" />
-              </svg>
+                <svg viewBox="0 0 100 100" width="100%" height="100%">
+                  <path d="M0,0 H30 V40 H70 V0 H100 V100 H70 V60 H30 V100 H0 Z" fill="white" />
+                </svg>
             </motion.div>
           </div>
 
-          {/* Right half — HackerRank green sliding from TOP */}
-          <div className="flex-1 overflow-hidden">
+          {/* Right half — HackerRank green sliding from BOTTOM */}
+          <div className="flex-1 aspect-square overflow-hidden">
             <motion.div
               className="logo-rect w-full h-full bg-[#1ba94c]"
-              initial={{ y: "-115%" }}
+              initial={{ y: "115%" }}
             />
           </div>
         </div>
@@ -129,7 +129,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
       <div className="setup-wrapper opacity-0 flex flex-col items-center" style={{ transformOrigin: "center center" }}>
         <div
           className="relative"
-          style={{ width: "clamp(320px, 88vw, 880px)" }}
+          style={{ width: "clamp(300px, 80vw, 800px)" }}
         >
           {/* Monitor + Stand SVG */}
           <svg viewBox="0 0 700 520" className="w-full" fill="none">
@@ -172,7 +172,7 @@ export default function Preloader({ onComplete }: { onComplete: () => void }) {
               width: "85%",
             }}
           >
-            <div className="flex flex-col items-center font-bold tracking-tight leading-none">
+            <div className="flex flex-col items-center font-bold tracking-normal leading-tight">
               {/* Line 1 — HackerRank */}
               <div
                 className="flex items-center justify-center"

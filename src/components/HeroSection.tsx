@@ -155,8 +155,8 @@ export default function HeroSection() {
             src={logo}
             alt="HackerRank Campus Crew"
             width={48}
-            height={28}
-            className="w-10 md:w-12 drop-shadow-lg"
+            height={24}
+            className="w-10 md:w-12 h-auto drop-shadow-lg"
           />
         </div>
       </motion.div>
@@ -170,7 +170,7 @@ export default function HeroSection() {
           transition={{ delay: 0.3, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
         >
           <h1
-            className="font-black leading-[0.95] tracking-tight"
+            className="font-black leading-none tracking-tight"
             style={{
               fontStyle: "italic",
               fontFamily: "'Outfit', sans-serif",

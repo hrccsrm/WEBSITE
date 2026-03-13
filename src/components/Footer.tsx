@@ -2,6 +2,8 @@
 
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
+import nobglogo from '@/assets/nobglogo.png';
 
 const Footer = () => {
   return (
@@ -20,8 +22,8 @@ const Footer = () => {
           
           {/* Left: Logo and Name */}
           <div className="lg:col-span-1">
-            <div className="flex items-center gap-3 mb-6">
-              <img src="/assets/nobglogo.png" alt="HRCC Logo" className="h-12 w-auto" />
+            <div className="flex items-start gap-3 mb-6">
+              <Image src={nobglogo} alt="HRCC Logo" className="h-16 w-auto" />
             </div>
             <div className="uppercase tracking-wider leading-relaxed font-bold text-2xl lg:text-3xl mb-4">
               <p>HackerRank</p>

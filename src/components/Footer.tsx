@@ -41,7 +41,7 @@ const Footer = () => {
               <Link href="#domains" className="block text-lg hover:text-green-500 transition-colors duration-200">Domains</Link>
               <Link href="#team" className="block text-lg hover:text-green-500 transition-colors duration-200">Team</Link>
               <Link href="#events" className="block text-lg hover:text-green-500 transition-colors duration-200">Events</Link>
-              <Link href="#contact" className="block text-lg hover:text-green-500 transition-colors duration-200">Contact Us</Link>
+              <Link href="mailto:hrccsrm@gmail.com" className="block text-lg hover:text-green-500 transition-colors duration-200">Contact Us</Link>
             </div>
           </div>
 

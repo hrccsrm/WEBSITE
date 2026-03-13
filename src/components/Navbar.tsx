@@ -92,7 +92,7 @@ export default function Navbar() {
 
           {/* CTA */}
           <a
-            href="#contact"
+            href="mailto:hrccsrm@gmail.com"
             onMouseEnter={() => setHovered("contact")}
             onMouseLeave={() => setHovered(null)}
             className="inline-flex items-center px-5 py-2 rounded-full text-[13px] font-semibold tracking-wide transition-all duration-200"
@@ -192,7 +192,7 @@ export default function Navbar() {
               
               {/* Mobile CTA */}
               <a
-                href="#contact"
+                href="mailto:hrccsrm@gmail.com"
                 onClick={() => setMobileMenuOpen(false)}
                 className="block w-full px-4 py-3 rounded-xl text-center font-semibold transition-all duration-200 mt-2"
                 style={{

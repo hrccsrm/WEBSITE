@@ -9,10 +9,10 @@ import ProfRevathi from "@/assets/Prof.-Revathi-Venkataraman.jpg";
 export default function CentreOfExcellence() {
   return (
     <section
-      className="relative z-10 py-20 px-4 md:px-8 overflow-hidden"
+      className="relative z-10 py-20 px-4 md:px-8 overflow-hidden pointer-events-none"
       style={{ background: "transparent" }}
     >
-      <div className="max-w-275 w-full mx-auto">
+      <div className="max-w-275 w-full mx-auto pointer-events-none">
         {/* Title */}
         <motion.div
           className="text-center mb-10 w-full"
@@ -45,7 +45,7 @@ export default function CentreOfExcellence() {
         >
           {/* Left: Dr. Annie Uthra */}
           <motion.div
-            className="flex flex-col items-center gap-4"
+            className="flex flex-col items-center gap-4 pointer-events-auto"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
@@ -65,7 +65,7 @@ export default function CentreOfExcellence() {
 
           {/* Centre: Udendharan */}
           <motion.div
-            className="flex flex-col items-center gap-4"
+            className="flex flex-col items-center gap-4 pointer-events-auto"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
@@ -85,7 +85,7 @@ export default function CentreOfExcellence() {
 
           {/* Right: Prof. Revathi Venkataraman */}
           <motion.div
-            className="flex flex-col items-center gap-4"
+            className="flex flex-col items-center gap-4 pointer-events-auto"
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >

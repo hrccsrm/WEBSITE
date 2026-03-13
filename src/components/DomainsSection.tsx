@@ -54,16 +54,16 @@ export default function DomainsSection() {
   return (
     <section
       id="domains"
-      className="relative z-10 py-16 px-4 md:px-6 w-full flex flex-col items-center justify-center"
+      className="relative z-10 py-16 px-4 md:px-6 w-full flex flex-col items-center justify-center pointer-events-none"
       style={{ background: "transparent" }}
     >
-      <div className="max-w-350 w-full" ref={ref}>
+      <div className="max-w-350 w-full pointer-events-none" ref={ref}>
         {/* Domain Cards — Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3 md:auto-rows-[280px]">
           {domains.map((domain, i) => (
             <motion.div
               key={domain.title}
-              className={`relative rounded-xl overflow-hidden cursor-pointer group ${domain.title === "TECHNICAL" ? "md:col-span-1 md:row-span-2" : domain.span}`}
+              className={`relative rounded-xl overflow-hidden cursor-pointer group pointer-events-auto ${domain.title === "TECHNICAL" ? "md:col-span-1 md:row-span-2" : domain.span}`}
               style={{ minHeight: domain.title === "TECHNICAL" ? "280px" : "280px" }}
               custom={i}
               initial="hidden"
@@ -152,7 +152,7 @@ export default function DomainsSection() {
           custom={3}
         >
           {/* Left — Recruitments CTA */}
-          <div className="bg-linear-to-br from-[#05C770] to-[#04a060] rounded-xl p-6 md:p-12 flex flex-col justify-between min-h-50 relative overflow-hidden group cursor-pointer">
+          <div className="bg-linear-to-br from-[#05C770] to-[#04a060] rounded-xl p-6 md:p-12 flex flex-col justify-between min-h-50 relative overflow-hidden group cursor-pointer pointer-events-auto">
             {/* Animated background pattern */}
             <div 
               className="absolute inset-0 opacity-10"
@@ -205,7 +205,7 @@ export default function DomainsSection() {
           </div>
 
           {/* Right — Video embed */}
-          <div className="bg-black rounded-xl overflow-hidden relative min-h-50 border border-white/5">
+          <div className="bg-black rounded-xl overflow-hidden relative min-h-50 border border-white/5 pointer-events-auto">
             <iframe
               src="https://player.vimeo.com/video/1115531421?badge=0&autopause=0&player_id=0&app_id=58479"
               className="absolute inset-0 w-full h-full"

@@ -203,10 +203,10 @@ export default function MeetTheCrew() {
   return (
     <section
       id="team"
-      className="relative z-10 py-20 px-4 md:px-8 overflow-hidden"
+      className="relative z-10 py-20 px-4 md:px-8 overflow-hidden pointer-events-none"
       style={{ background: "transparent" }}
     >
-      <div className="max-w-275 w-full mx-auto">
+      <div className="max-w-275 w-full mx-auto pointer-events-none">
         <motion.div
           className="relative z-10 text-center px-4 mb-8"
           initial={{ opacity: 0, y: 30 }}
@@ -223,7 +223,7 @@ export default function MeetTheCrew() {
         </motion.div>
 
         {/* ── President & Vice Presidents ── */}
-        <div className="w-full flex flex-col items-center mt-6 pointer-events-auto">
+        <div className="w-full flex flex-col items-center mt-6 pointer-events-none">
           <div className="max-w-3xl w-full text-center mb-4">
             <h3 className="font-black text-white" style={{ fontSize: "clamp(1.2rem, 2.2vw, 1.5rem)", lineHeight: 1 }}>
               <span style={{ color: "#05C770" }}>President &amp; Vice Presidents</span>
@@ -237,7 +237,7 @@ export default function MeetTheCrew() {
         </div>
 
         {/* ── Domain Leads ── */}
-        <div className="w-full flex flex-col items-center mt-6 pointer-events-auto">
+        <div className="w-full flex flex-col items-center mt-6 pointer-events-none">
           <div className="max-w-3xl w-full text-center mb-4">
             <h3 className="font-black text-white" style={{ fontSize: "clamp(1.2rem, 2.2vw, 1.5rem)", lineHeight: 1 }}>
               <span style={{ color: "#05C770" }}>Domain Leads</span>

@@ -37,7 +37,7 @@ export default function CentreOfExcellence() {
 
         {/* Faculty Photos in Circles */}
         <motion.div
-          className="flex justify-center items-start gap-12 md:gap-24 mt-16"
+          className="flex flex-col md:flex-row justify-center items-center gap-8 md:gap-24 mt-12 md:mt-16"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.3 }}
@@ -49,7 +49,7 @@ export default function CentreOfExcellence() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-xl">
+            <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden shadow-xl">
               <Image
                 src={DrAnnie}
                 alt="Dr. Annie Uthra"
@@ -58,7 +58,7 @@ export default function CentreOfExcellence() {
                 priority
               />
             </div>
-            <h3 className="text-white text-center font-semibold text-base md:text-lg">
+            <h3 className="text-white text-center font-semibold text-sm md:text-base lg:text-lg">
               Dr.R. Annie Uthra
             </h3>
           </motion.div>
@@ -69,7 +69,7 @@ export default function CentreOfExcellence() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-xl">
+            <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden shadow-xl">
               <Image
                 src={Udendharan}
                 alt="Udendharan"
@@ -78,7 +78,7 @@ export default function CentreOfExcellence() {
                 priority
               />
             </div>
-            <h3 className="text-white text-center font-semibold text-base md:text-lg">
+            <h3 className="text-white text-center font-semibold text-sm md:text-base lg:text-lg">
               Dr R. Udendhran Mudaliyar
             </h3>
           </motion.div>
@@ -89,7 +89,7 @@ export default function CentreOfExcellence() {
             whileHover={{ scale: 1.05 }}
             transition={{ duration: 0.3 }}
           >
-            <div className="relative w-64 h-64 md:w-72 md:h-72 rounded-full overflow-hidden shadow-xl">
+            <div className="relative w-48 h-48 md:w-64 md:h-64 lg:w-72 lg:h-72 rounded-full overflow-hidden shadow-xl">
               <Image
                 src={ProfRevathi}
                 alt="Prof. Revathi Venkataraman"
@@ -98,7 +98,7 @@ export default function CentreOfExcellence() {
                 priority
               />
             </div>
-            <h3 className="text-white text-center font-semibold text-base md:text-lg">
+            <h3 className="text-white text-center font-semibold text-sm md:text-base lg:text-lg">
               Dr. Revathi Venkataraman
             </h3>
           </motion.div>

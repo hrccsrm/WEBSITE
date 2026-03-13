@@ -229,7 +229,19 @@ export default function MeetTheCrew() {
           viewport={{ once: true }}
           transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
         >
-                    <h2
+          <span
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium tracking-widest uppercase mb-4"
+            style={{ borderColor: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.65)", background: "rgba(255,255,255,0.06)" }}
+          >
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" aria-hidden="true">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+              <circle cx="9" cy="7" r="4" />
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+              <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+            </svg>
+            Our Team
+          </span>
+          <h2
             className="font-black text-white"
             style={{ fontSize: "clamp(2rem, 5vw, 4rem)", lineHeight: 1.1 }}
           >
@@ -282,8 +294,8 @@ export default function MeetTheCrew() {
       </div>
 
         {/* ── Always-visible Domain Leads (placed below the sticky panel) ── */}
-        <div className="w-full flex flex-col items-center -mt-4 pointer-events-auto">
-          <div className="max-w-3xl w-full text-center">
+        <div className="w-full flex flex-col items-center mt-6 pointer-events-auto">
+          <div className="max-w-3xl w-full text-center mb-4">
             <h3 className="font-black text-white" style={{ fontSize: "clamp(1rem, 1.8vw, 1.25rem)", lineHeight: 1 }}>
               <span style={{ color: "#05C770" }}>Domain Leads</span>
             </h3>

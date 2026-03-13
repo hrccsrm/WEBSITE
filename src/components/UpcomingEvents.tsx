@@ -82,7 +82,7 @@ export default function UpcomingEvents() {
           viewport={{ once: true, amount: 0.5 }}
           transition={{ duration: 0.7 }}
         >
-          UPCOMING EVENTS
+          EVENTS
         </motion.h2>
 
         {/* Spacer after title */}

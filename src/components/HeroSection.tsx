@@ -73,10 +73,10 @@ export default function HeroSection() {
 	return (
 		<section
 			id="home"
-			className="relative min-h-screen flex flex-col items-center justify-center px-6 overflow-hidden pointer-events-none"
+			className="relative min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 md:px-8 lg:px-12 overflow-hidden pointer-events-none"
 		>
 			{/* ── Centered content ── */}
-			<div className="relative z-10 flex flex-col items-center text-center gap-6 max-w-3xl pointer-events-none" style={{ transform: 'translateY(3vh)' }}>
+			<div className="relative z-10 flex flex-col items-center text-center gap-4 sm:gap-6 max-w-4xl mx-auto pointer-events-none" style={{ transform: 'translateY(3vh)' }}>
 				{/* Badge */}
 				<motion.div
 					initial={{ opacity: 0, y: -16 }}
@@ -84,18 +84,19 @@ export default function HeroSection() {
 					transition={{ delay: 0.2, duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
 				>
 					<span
-						className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border text-xs font-medium tracking-widest uppercase"
+						className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full border text-[10px] font-medium tracking-widest uppercase"
 						style={{ borderColor: "rgba(255,255,255,0.18)", color: "rgba(255,255,255,0.65)", background: "rgba(255,255,255,0.06)" }}
 					>
-						<svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
-						HackerRank Campus Crew · SRMIST KTR
+						<svg width="10" height="10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12" /></svg>
+						<span className="hidden sm:inline">HackerRank Campus Crew · SRMIST KTR</span>
+						<span className="sm:hidden">HRCC · SRMIST</span>
 					</span>
 				</motion.div>
 
 				{/* Heading */}
 				<motion.h1
 					className="font-black leading-tight tracking-tight text-white"
-					style={{ fontSize: "clamp(2.6rem, 7vw, 6.5rem)", lineHeight: 0.92 }}
+					style={{ fontSize: "clamp(2.5rem, 12vw, 6.5rem)", lineHeight: 0.92 }}
 					initial={{ opacity: 0, y: 30 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.35, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
@@ -109,7 +110,7 @@ export default function HeroSection() {
 
 				{/* Sub-text */}
 				<motion.p
-					className="text-white/55 text-base md:text-lg leading-relaxed max-w-xl"
+					className="text-white/55 text-xs sm:text-sm leading-relaxed max-w-lg px-4 sm:px-0 hidden sm:block"
 					initial={{ opacity: 0, y: 20 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.55, duration: 0.7 }}
@@ -120,14 +121,14 @@ export default function HeroSection() {
 
 				{/* CTA Buttons */}
 				<motion.div
-					className="flex items-center gap-4 mt-2 mb-6"
+					className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 mt-2 mb-4 sm:mb-6 px-4 sm:px-0"
 					initial={{ opacity: 0, y: 16 }}
 					animate={{ opacity: 1, y: 0 }}
 					transition={{ delay: 0.7, duration: 0.6 }}
 				>
 					<a
 						href="#domains"
-						className="pointer-events-auto px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300"
+						className="pointer-events-auto px-4 sm:px-7 py-2 sm:py-3 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 w-full sm:w-auto text-center"
 						style={{ background: "#fff", color: "#0a0a0a" }}
 						onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#05C770"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
 						onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "#fff"; (e.currentTarget as HTMLAnchorElement).style.color = "#0a0a0a"; }}
@@ -136,7 +137,7 @@ export default function HeroSection() {
 					</a>
 					<a
 						href="#about"
-						className="pointer-events-auto px-7 py-3 rounded-full font-semibold text-sm tracking-wide transition-all duration-300"
+						className="pointer-events-auto px-4 sm:px-7 py-2 sm:py-3 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 w-full sm:w-auto text-center"
 						style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.75)", background: "rgba(255,255,255,0.06)" }}
 						onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
 						onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)"; }}
@@ -147,36 +148,49 @@ export default function HeroSection() {
 
 				{/* Social icons */}
 				<motion.div
-					className="flex items-center gap-5 mt-8"
+					className="flex items-center justify-center gap-2 sm:gap-5 mt-4 sm:mt-8 flex-wrap"
 					initial={{ opacity: 0 }}
 					animate={{ opacity: 1 }}
 					transition={{ delay: 0.9, duration: 0.6 }}
 				>
-					{socials.map((social) => (
+					{socials.slice(0, 4).map((social) => (
 						<a
 							key={social.name}
 							href={social.href}
 							target="_blank"
 							rel="noopener noreferrer"
-							className="pointer-events-auto text-white/35 hover:text-white transition-colors duration-300"
+							className="pointer-events-auto text-white/35 hover:text-white transition-colors duration-300 p-1"
 							aria-label={social.name}
 						>
-							{social.icon}
+							<div className="w-4 h-4 sm:w-7 sm:h-7">
+								{social.icon}
+							</div>
 						</a>
 					))}
+					<a
+						href="#"
+						className="pointer-events-auto text-white/35 hover:text-white transition-colors duration-300 p-1 sm:hidden"
+						aria-label="More social links"
+					>
+						<div className="w-4 h-4 flex items-center justify-center text-white/35">
+							<svg viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 8c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2zm0 2c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2zm0 6c-1.1 0-2 .9-2 2s.9 2 2 2 2-.9 2-2-.9-2-2-2z"/>
+							</svg>
+						</div>
+					</a>
 				</motion.div>
 			</div>
 
 			{/* Scroll cue */}
 			<motion.div
-				className="absolute bottom-6 flex flex-col items-center gap-1.5"
+				className="absolute bottom-4 sm:bottom-6 flex flex-col items-center gap-1.5"
 				initial={{ opacity: 0 }}
 				animate={{ opacity: 1 }}
 				transition={{ delay: 1.2, duration: 0.6 }}
 			>
-				<span className="text-white/30 text-[10px] tracking-[0.25em] uppercase">Scroll</span>
+				<span className="text-white/30 text-[8px] sm:text-[10px] tracking-[0.2em] sm:tracking-[0.25em] uppercase">Scroll</span>
 				<motion.div
-					className="w-px h-8 bg-white/20"
+					className="w-px h-6 sm:h-8 bg-white/20"
 					animate={{ scaleY: [1, 0.3, 1] }}
 					transition={{ duration: 1.6, repeat: Infinity, ease: "easeInOut" }}
 				/>

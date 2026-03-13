@@ -63,8 +63,8 @@ export default function DomainsSection() {
           {domains.map((domain, i) => (
             <motion.div
               key={domain.title}
-              className={`relative rounded-xl overflow-hidden cursor-pointer group ${domain.span}`}
-              style={{ minHeight: domain.title === "TECHNICAL" ? "580px" : "280px" }}
+              className={`relative rounded-xl overflow-hidden cursor-pointer group ${domain.title === "TECHNICAL" ? "md:col-span-1 md:row-span-2" : domain.span}`}
+              style={{ minHeight: domain.title === "TECHNICAL" ? "280px" : "280px" }}
               custom={i}
               initial="hidden"
               whileInView="visible"
@@ -82,8 +82,8 @@ export default function DomainsSection() {
               />
 
               {/* Dark overlay — heavier on the left for text readability */}
-              <div className="absolute inset-0 bg-linear-to-r from-black/80 via-black/40 to-transparent" />
-              <div className="absolute inset-0 bg-linear-to-t from-black/60 via-transparent to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-r from-black/90 via-black/50 to-transparent" />
+              <div className="absolute inset-0 bg-linear-to-t from-black/70 via-transparent to-transparent" />
 
               {/* Subtle dot pattern */}
               <div

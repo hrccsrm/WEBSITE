@@ -23,19 +23,79 @@ interface CrewMember {
 
 // ─── Data ──────────────────────────────────────────────────────────────────────
 const presidentAndVPs: CrewMember[] = [
-  { name: "Arnav Puggal", role: "President", image: Arnav, github: "#", linkedin: "#" },
-  { name: "Ayush Sharma", role: "Vice President", image: Ayush, github: "#", linkedin: "#" },
-  { name: "Vishesh Jhabak", role: "Vice President", image: Vishesh, github: "#", linkedin: "#" },
-  { name: "Aryan Gupta", role: "Vice President", image: Aryan, github: "#", linkedin: "#" },
+  { 
+    name: "Arnav Puggal", 
+    role: "President", 
+    image: Arnav, 
+    github: "https://github.com/12asascoder", 
+    linkedin: "https://www.linkedin.com/in/arnav-puggal/" 
+  },
+  { 
+    name: "Ayush Sharma", 
+    role: "Vice President", 
+    image: Ayush, 
+    github: "https://github.com/itzayush18", 
+    linkedin: "https://www.linkedin.com/in/itsayush18/" 
+  },
+  { 
+    name: "Vishesh Jhabak", 
+    role: "Vice President", 
+    image: Vishesh, 
+    github: "#", 
+    linkedin: "https://www.linkedin.com/in/vishesh-jhabak-a7b000327" 
+  },
+  { 
+    name: "Aryan Gupta", 
+    role: "Vice President", 
+    image: Aryan, 
+    github: "https://github.com/Aryan27-max", 
+    linkedin: "https://www.linkedin.com/in/aryan-gupta-1058aa209/" 
+  },
 ];
 
 const leads: CrewMember[] = [
-  { name: "Anish Mall", role: "Technical Lead", image: Anish, github: "#", linkedin: "#" },
-  { name: "Aashi Soni", role: "Technical Lead", image: Aashi, github: "#", linkedin: "#" },
-  { name: "Saii", role: "Creatives Lead", image: Saii, github: "#", linkedin: "#" },
-  { name: "Purva Jain", role: "Creatives Lead", image: Purva, github: "#", linkedin: "#" },
-  { name: "Nischay Naman", role: "Corporate Lead", image: Nischay, github: "#", linkedin: "#" },
-  { name: "Ranvir Singh", role: "Corporate Lead", image: Ranvir, github: "#", linkedin: "#" },
+  { 
+    name: "Anish Mall", 
+    role: "Technical Lead", 
+    image: Anish, 
+    github: "https://github.com/anish-9387", 
+    linkedin: "https://www.linkedin.com/in/anish-mall/" 
+  },
+  { 
+    name: "Aashi Soni", 
+    role: "Technical Lead", 
+    image: Aashi, 
+    github: "https://github.com/aashisoni000", 
+    linkedin: "https://www.linkedin.com/in/aashisoni/" 
+  },
+  { 
+    name: "Saii", 
+    role: "Creatives Lead", 
+    image: Saii, 
+    github: "#", 
+    linkedin: "https://www.linkedin.com/in/sai-shraavya-badrinath-48aa48323" 
+  },
+  { 
+    name: "Purva Jain", 
+    role: "Creatives Lead", 
+    image: Purva, 
+    github: "https://github.com/purvajain-git", 
+    linkedin: "https://www.linkedin.com/in/purva-jain17" 
+  },
+  { 
+    name: "Nischay Naman", 
+    role: "Corporate Lead", 
+    image: Nischay, 
+    github: "https://github.com/NischayNN", 
+    linkedin: "https://www.linkedin.com/in/nischaynaman-303938379" 
+  },
+  { 
+    name: "Ranvir Singh", 
+    role: "Corporate Lead", 
+    image: Ranvir, 
+    github: "https://github.com/rs7185-lab", 
+    linkedin: "https://www.linkedin.com/in/ranvir-singh-268222383" 
+  },
 ];
 
 // ─── Icons ─────────────────────────────────────────────────────────────────────
@@ -72,17 +132,15 @@ function CrewCard({ member }: { member: CrewMember }) {
         transition: { duration: 0.18 },
       }}
     >
-      {/* Mac window chrome */}
       <div
         className="flex items-center gap-1 px-2 py-2"
         style={{ background: "#0d0d0d", borderBottom: "1px solid rgba(255,255,255,0.05)" }}
       >
-        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#FF5F56", display: "inline-block", flexShrink: 0 }} />
-        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#FFBD2E", display: "inline-block", flexShrink: 0 }} />
-        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#27C93F", display: "inline-block", flexShrink: 0 }} />
+        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#FF5F56", display: "inline-block" }} />
+        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#FFBD2E", display: "inline-block" }} />
+        <span style={{ width: 8, height: 8, borderRadius: "50%", background: "#27C93F", display: "inline-block" }} />
       </div>
 
-      {/* Photo */}
       <div className="relative w-full" style={{ aspectRatio: "1 / 1" }}>
         <Image
           src={member.image}
@@ -93,7 +151,6 @@ function CrewCard({ member }: { member: CrewMember }) {
         />
       </div>
 
-      {/* Info */}
       <div
         className="flex items-center justify-between px-2 py-2 gap-2"
         style={{ background: "#0f0f0f" }}
@@ -113,7 +170,7 @@ function CrewCard({ member }: { member: CrewMember }) {
           </p>
         </div>
         <div className="flex gap-1.5 shrink-0">
-          {member.github && (
+          {member.github && member.github !== "#" && (
             <a
               href={member.github}
               target="_blank"
@@ -124,7 +181,7 @@ function CrewCard({ member }: { member: CrewMember }) {
               <GithubIcon />
             </a>
           )}
-          {member.linkedin && (
+          {member.linkedin && member.linkedin !== "#" && (
             <a
               href={member.linkedin}
               target="_blank"
@@ -143,7 +200,6 @@ function CrewCard({ member }: { member: CrewMember }) {
 
 // ─── Section ───────────────────────────────────────────────────────────────────
 export default function MeetTheCrew() {
-
   return (
     <section
       id="team"
@@ -151,8 +207,6 @@ export default function MeetTheCrew() {
       style={{ background: "transparent" }}
     >
       <div className="max-w-275 w-full mx-auto">
-
-        {/* ── Section header ── */}
         <motion.div
           className="relative z-10 text-center px-4 mb-8"
           initial={{ opacity: 0, y: 30 }}
@@ -166,8 +220,7 @@ export default function MeetTheCrew() {
           >
             MEET THE <span style={{ color: "#05C770" }}>CREW</span>
           </h2>
-
-          </motion.div>
+        </motion.div>
 
         {/* ── President & Vice Presidents ── */}
         <div className="w-full flex flex-col items-center mt-6 pointer-events-auto">
@@ -176,7 +229,6 @@ export default function MeetTheCrew() {
               <span style={{ color: "#05C770" }}>President &amp; Vice Presidents</span>
             </h3>
           </div>
-
           <div className="flex flex-wrap justify-center gap-3 md:gap-5 px-4 md:px-10 items-center py-2">
             {presidentAndVPs.map((member) => (
               <CrewCard key={member.name} member={member} />
@@ -191,7 +243,6 @@ export default function MeetTheCrew() {
               <span style={{ color: "#05C770" }}>Domain Leads</span>
             </h3>
           </div>
-
           <div className="flex flex-wrap justify-center gap-3 md:gap-5 px-4 md:px-10 items-center py-2">
             {leads.map((member) => (
               <CrewCard key={member.name} member={member} />

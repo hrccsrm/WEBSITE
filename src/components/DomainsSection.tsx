@@ -152,30 +152,56 @@ export default function DomainsSection() {
           custom={3}
         >
           {/* Left — Recruitments CTA */}
-          <div className="bg-[#05C770] rounded-xl p-8 md:p-12 flex flex-col justify-between min-h-50 relative overflow-hidden group">
-            <div>
+          <div className="bg-linear-to-br from-[#05C770] to-[#04a060] rounded-xl p-6 md:p-12 flex flex-col justify-between min-h-50 relative overflow-hidden group cursor-pointer">
+            {/* Animated background pattern */}
+            <div 
+              className="absolute inset-0 opacity-10"
+              style={{
+                backgroundImage: "radial-gradient(circle, rgba(255,255,255,0.3) 1px, transparent 1px)",
+                backgroundSize: "20px 20px",
+              }}
+            />
+            
+            {/* Glow effect on hover */}
+            <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 bg-linear-to-t from-white/10 to-transparent" />
+            
+            <div className="relative z-10">
+              <div className="inline-flex items-center gap-2 px-2 py-1 rounded-full bg-black/20 backdrop-blur-sm mb-2 md:mb-4">
+                <div className="w-1.5 h-1.5 bg-black rounded-full animate-pulse" />
+                <span className="text-black text-[10px] md:text-xs font-semibold uppercase tracking-wider">Now Hiring</span>
+              </div>
               <h3
                 className="text-black font-black tracking-tight leading-none"
                 style={{
-                  fontSize: "clamp(2.5rem, 5vw, 4rem)",
+                  fontSize: "clamp(1.8rem, 4vw, 4rem)",
                 }}
               >
                 RECRUITMENTS
                 <br />
                 OPEN.
               </h3>
+              <p className="text-black/80 mt-2 md:mt-3 text-xs md:text-sm max-w-xs hidden md:block">
+                Join our team and be part of something amazing
+              </p>
             </div>
-            <div className="self-end mt-6">
-              <svg
-                className="w-12 h-12 text-black transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
-                <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
-              </svg>
+            <div className="self-end mt-4 md:mt-6 relative z-10">
+              <div className="flex items-center gap-2 md:gap-3">
+                <span className="text-black font-semibold text-xs md:text-sm hidden sm:block">Apply Now</span>
+                <div className="bg-black/20 rounded-full p-2 md:p-3 group-hover:bg-black/30 transition-colors duration-300">
+                  <svg
+                    className="w-4 h-4 md:w-6 md:h-6 text-black transition-transform group-hover:translate-x-1 group-hover:-translate-y-1"
+                    viewBox="0 0 24 24"
+                    fill="currentColor"
+                  >
+                    <path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z" />
+                  </svg>
+                </div>
+              </div>
             </div>
-            {/* Decorative circle */}
+            {/* Enhanced decorative elements */}
             <div className="absolute -bottom-10 -right-10 w-40 h-40 rounded-full bg-black/5" />
+            <div className="absolute -top-5 -left-5 w-20 h-20 rounded-full bg-white/10" />
+            <div className="absolute top-1/2 -right-8 w-16 h-16 rounded-full bg-black/5" />
           </div>
 
           {/* Right — Video embed */}

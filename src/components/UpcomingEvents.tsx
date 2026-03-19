@@ -23,8 +23,8 @@ const events: EventItem[] = [
   {
     id: "club-launch",
     title: "Club\nLaunch",
-    year: "2024",
-    description: "In September 2024, we officially kicked things off! The event featured Aadil Bankukwala, the CMO of HackerRank, who shared valuable insights about the tech industry. Our inaugural launch brought together passionate minds and set the stage for everything our club aims to achieve. It was an incredible session filled with networking, roadmap reveals, and our vision for the future of technology and collaboration on campus.",
+    year: "2025",
+    description: "In September 2025, we officially kicked things off! The event featured Aadil Bankukwala, the CMO of HackerRank, who shared valuable insights about the tech industry. Our inaugural launch brought together passionate minds and set the stage for everything our club aims to achieve. It was an incredible session filled with networking, roadmap reveals, and our vision for the future of technology and collaboration on campus.",
     images: [clubStart],
     titleColor: "#E8706A",
     yearColor: "#05C770",
@@ -32,7 +32,7 @@ const events: EventItem[] = [
   {
     id: "online-codethon",
     title: "Online\nCodethon",
-    year: "2024",
+    year: "2025",
     description: "Overclocked was our flagship campus-wide codeathon that pushed students beyond their limits. This multi-round competition challenged participants across Object-Oriented Programming, Data Structures & Algorithms, Web Development, and React. Starting with online qualifiers, the event filtered top talent through intense elimination rounds, culminating in a high-stakes offline finale. With 4,000–5,000 participants, Overclocked tested problem-solving, code efficiency, and practical implementation.",
     images: [codathon],
     titleColor: "#4A90D9",
@@ -41,7 +41,7 @@ const events: EventItem[] = [
   {
     id: "tech-talk",
     title: "Tech\nTalk",
-    year: "2024",
+    year: "2026",
     description: "Join us for an enlightening Tech Talk featuring Dr. Paul T Sheeba and Dr. Gopiranjan PV, distinguished experts in the field of technology and innovation. This engaging session will dive deep into cutting-edge industry trends, research insights, and practical applications. Whether you're a beginner seeking guidance or an experienced professional looking to expand your knowledge, this talk offers valuable perspectives, interactive Q&A opportunities, and networking with peers and industry leaders.",
     images: [techtalk],
     titleColor: "#F5A623",
@@ -50,7 +50,7 @@ const events: EventItem[] = [
   {
     id: "april-hackathon",
     title: "April\nHackathon",
-    year: "2024",
+    year: "2026",
     description: "Get ready for the ultimate test of creativity and endurance! Our upcoming flagship April Hackathon features 24 hours of non-stop building and innovation. Form your teams, brainstorm your wildest ideas, and push your limits in this intense coding marathon. With exciting tracks, incredible prizes, and mentorship from industry professionals, this is the event you don't want to miss. Registration opens soon!",
     images: [aprilhackathon],
     titleColor: "#05C770",

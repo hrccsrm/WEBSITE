@@ -7,13 +7,13 @@ import Image, { StaticImageData } from "next/image";
 import clubStart from "@/assets/club_start.jpeg";
 import codathon from "@/assets/codathon.jpeg";
 import techtalk from "@/assets/techtalk.jpeg";
-import aprilhackathon from "@/assets/aprilhackathon.jpeg";
+import aprilhackathon from "@/assets/techformers.jpeg";
 
 interface EventItem {
   id: string;
   title: string;
   year: string;
-  description: string;
+  description: React.ReactNode;
   images: StaticImageData[];
   titleColor: string;
   yearColor: string;
@@ -49,9 +49,25 @@ const events: EventItem[] = [
   },
   {
     id: "april-hackathon",
-    title: "April\nHackathon",
+    title: "Techformers\n1.0",
     year: "2026",
-    description: "Get ready for the ultimate test of creativity and endurance! Our upcoming flagship April Hackathon features 24 hours of non-stop building and innovation. Form your teams, brainstorm your wildest ideas, and push your limits in this intense coding marathon. With exciting tracks, incredible prizes, and mentorship from industry professionals, this is the event you don't want to miss. Registration opens soon!",
+    description: (
+      <div className="flex flex-col gap-4 text-left">
+        <p className="text-gray-700">
+          Step into <strong>Techformers 1.0</strong>, a 2-day hackathon organized by HackerRank Campus Crew SRMIST in collaboration with HackerRank! Whether you're a beginner or an experienced developer, this event is designed to challenge your skills, spark innovation, and build impactful solutions for real-world problems. Join us on 7th–8th April 2026 at SRMIST for 2 days of intense hands-on building, team collaboration, and a chance to win from a prize pool of ₹30,000. Registration is live - no matter your level, there's a problem waiting for you!
+        </p>
+        <div className="mt-4 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
+          <a
+            href="https://hackculture.io/hackathons/techformers-1-0"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="w-full sm:w-auto px-8 py-3 bg-[#05C770] hover:bg-[#04a85f] text-white font-bold rounded-lg shadow-md transition-colors text-center inline-block"
+          >
+            Register Now
+          </a>
+        </div>
+      </div>
+    ),
     images: [aprilhackathon],
     titleColor: "#05C770",
     yearColor: "#4A90D9",
@@ -107,9 +123,9 @@ export default function UpcomingEvents() {
             >
               {/* Left — Event Description */}
               <div className="flex-1 p-8 lg:p-12 flex flex-col justify-center lg:items-start items-center text-center lg:text-left">
-                <p className="text-gray-700 text-lg leading-relaxed max-w-lg">
+                <div className="text-gray-700 text-lg leading-relaxed max-w-lg w-full">
                   {activeEvent.description}
-                </p>
+                </div>
               </div>
 
               {/* Right — Event Photos */}
@@ -146,13 +162,18 @@ export default function UpcomingEvents() {
                 className="relative flex flex-col items-center gap-3 group z-10"
               >
                 {/* Dot indicator */}
-                <div
-                  className="w-6 h-6 rounded-md border-2 transition-all duration-300"
-                  style={{
-                    borderColor: activeIndex === i ? "#05C770" : "rgba(255,255,255,0.25)",
-                    background: activeIndex === i ? "#05C770" : "transparent",
-                  }}
-                />
+                <div className="relative">
+                  {event.id === "april-hackathon" && (
+                    <div className="absolute inset-0 bg-[#05C770] rounded-md animate-ping opacity-75" />
+                  )}
+                  <div
+                    className="relative w-6 h-6 rounded-md border-2 transition-all duration-300"
+                    style={{
+                      borderColor: activeIndex === i ? "#05C770" : "rgba(255,255,255,0.25)",
+                      background: activeIndex === i ? "#05C770" : "transparent",
+                    }}
+                  />
+                </div>
                 {/* Label */}
                 <span
                   className="text-sm md:text-base font-semibold transition-colors duration-300 whitespace-nowrap"
@@ -167,7 +188,7 @@ export default function UpcomingEvents() {
                     ? "Online\nCodethon"
                     : event.id === "tech-talk"
                     ? "Tech\nTalk"
-                    : "April\nHackathon"}
+                    : "Techformers"}
                 </span>
               </button>
             ))}

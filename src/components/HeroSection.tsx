@@ -108,15 +108,6 @@ export default function HeroSection() {
 					>
 						Explore
 					</a>
-					<a
-						href="#about"
-						className="pointer-events-auto px-4 sm:px-7 py-2 sm:py-3 rounded-full font-semibold text-xs sm:text-sm tracking-wide transition-all duration-300 w-full sm:w-auto text-center"
-						style={{ border: "1px solid rgba(255,255,255,0.25)", color: "rgba(255,255,255,0.75)", background: "rgba(255,255,255,0.06)" }}
-						onMouseEnter={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.12)"; (e.currentTarget as HTMLAnchorElement).style.color = "#fff"; }}
-						onMouseLeave={e => { (e.currentTarget as HTMLAnchorElement).style.background = "rgba(255,255,255,0.06)"; (e.currentTarget as HTMLAnchorElement).style.color = "rgba(255,255,255,0.75)"; }}
-					>
-						Learn More
-					</a>
 				</motion.div>
 
 				{/* Social icons */}

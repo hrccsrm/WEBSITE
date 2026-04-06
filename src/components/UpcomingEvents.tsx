@@ -58,12 +58,10 @@ const events: EventItem[] = [
         </p>
         <div className="mt-4 flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start">
           <a
-            href="https://hackculture.io/hackathons/techformers-1-0"
-            target="_blank"
-            rel="noopener noreferrer"
+            href="/techformers"
             className="w-full sm:w-auto px-8 py-3 bg-[#05C770] hover:bg-[#04a85f] text-white font-bold rounded-lg shadow-md transition-colors text-center inline-block"
           >
-            Register Now
+            Live
           </a>
         </div>
       </div>

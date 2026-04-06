@@ -12,6 +12,9 @@ export const metadata: Metadata = {
   title: "HackerRank Campus Crew SRM",
   description:
     "A community for those who see puzzles where others see problems. HackerRank Campus Crew SRM — Technical, Creative, Corporate excellence.",
+  icons: {
+    icon: "/logo.png",
+  },
 };
 
 export default function RootLayout({

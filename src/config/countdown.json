@@ -1,0 +1,65 @@
+{
+  "event": {
+    "title": "TECHFORMERS 1.0",
+    "description": "HackerRank Campus Crew, SRMIST KTR",
+    "date": "07 April 2026",
+    "time": "10:00 AM",
+    "round": "We'll be starting soon!",
+    "quotes": [
+      "Build. Break. Learn. Repeat.",
+      "Great ideas start with bold teams.",
+      "Code with purpose, ship with confidence.",
+      "Small commits, big impact."
+    ]
+  },
+  "sponsors": [
+    {
+      "src": "/sponsors/srm.svg",
+      "alt": "SRM IST",
+      "size": 40,
+      "dark": false
+    },
+    {
+      "src": "/sponsors/whisper_flow.png",
+      "alt": "Sponsor 1",
+      "size": 40,
+      "dark": true
+    },
+    {
+      "src": "/sponsors/turn_two_law.png",
+      "alt": "Sponsor 2",
+      "size": 80,
+      "dark": false
+    },
+    {
+      "src": "/sponsors/sucksi.png",
+      "alt": "Sponsor 3",
+      "size": 30,
+      "dark": false
+    },
+    {
+      "src": "/sponsors/hackculture.png",
+      "alt": "Sponsor 4",
+      "size": 40,
+      "dark": true
+    },
+    {
+      "src": "/sponsors/cintel.png",
+      "alt": "Sponsor 5",
+      "size": 60,
+      "dark": false
+    },
+    {
+      "src": "/sponsors/soc.png",
+      "alt": "Sponsor 6",
+      "size": 60,
+      "dark": true
+    },
+    {
+      "src": "/sponsors/spazorlabs.png",
+      "alt": "Sponsor 7",
+      "size": 50,
+      "dark": false
+    }
+  ]
+}

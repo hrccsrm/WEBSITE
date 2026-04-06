@@ -18,6 +18,11 @@ interface EventConfig {
     quotes?: string[];
 }
 
+interface AudioConfig {
+    enabled: boolean;
+    volume?: number;
+}
+
 // Parse Indian date/time format to timestamp
 const parseIndianDateTime = (date: string, time: string): number => {
     // Parse date: "08 April 2026" -> parts
@@ -59,6 +64,11 @@ const CountdownTimer = () => {
     const eventDescription = event.description;
     const eventRound = event.round;
     const eventQuotes = event.quotes ?? [];
+    const audioConfig = (countdownConfig.audio ?? { enabled: true, volume: 1 }) as AudioConfig;
+    const isAudioEnabled = audioConfig.enabled;
+    const audioVolume = typeof audioConfig.volume === 'number'
+        ? Math.max(0, Math.min(1, audioConfig.volume))
+        : 1;
     const sponsors = countdownConfig.sponsors as Sponsor[];
     const quoteOfTheMoment = eventQuotes.length > 0
         ? eventQuotes[Math.floor(Date.now() / 60000) % eventQuotes.length]
@@ -73,8 +83,9 @@ const CountdownTimer = () => {
     }, []);
 
     useEffect(() => {
+        if (!isAudioEnabled) return;
         const audio = new Audio('/sounds/10sec.mp3');
-        audio.volume = 1;
+        audio.volume = audioVolume;
         audio.preload = 'auto';
         tenSecondAudioRef.current = audio;
 
@@ -91,9 +102,10 @@ const CountdownTimer = () => {
         };
         document.addEventListener('click', unlock);
         return () => document.removeEventListener('click', unlock);
-    }, []);
+    }, [isAudioEnabled, audioVolume]);
 
     const playTenSecondSound = useCallback(() => {
+        if (!isAudioEnabled) return;
         if (tenSecondSoundPlayedRef.current || !tenSecondAudioRef.current) return;
         tenSecondAudioRef.current.currentTime = 0;
         tenSecondAudioRef.current.play()
@@ -101,7 +113,7 @@ const CountdownTimer = () => {
                 tenSecondSoundPlayedRef.current = true;
             })
             .catch(() => {});
-    }, []);
+    }, [isAudioEnabled]);
 
     useEffect(() => {
         const pad = (n: number) => String(n).padStart(2, '0');
@@ -175,7 +187,7 @@ const CountdownTimer = () => {
                     opacity: 1;
                     transition: opacity 0.25s ease, transform 0.25s ease, filter 0.25s ease;
                     object-fit: contain;
-                    max-width: 140px;
+                    max-width: none;
                     display: block;
                     filter: drop-shadow(0 0 4px rgba(255,255,255,0.10));
                 }
@@ -187,7 +199,7 @@ const CountdownTimer = () => {
                 /* ── Large screen / TV mode (≥ 1600px) ────────────────────── */
                 @media (min-width: 1600px) {
                     .sponsor-logo-wrap    { height: 80px; }
-                    .sponsor-logo         { max-width: 200px; }
+                    .sponsor-logo         { max-width: none; }
                     .tv-strip-gap         { gap: 88px !important; padding: 18px 56px 32px !important; }
                     .tv-header-img        { height: 30px !important; opacity: 0.85 !important; }
                     .tv-h2               { font-size: 24px !important; opacity: 0.8 !important; }

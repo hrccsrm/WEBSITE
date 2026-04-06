@@ -12,17 +12,21 @@
       "Small commits, big impact."
     ]
   },
+  "audio": {
+    "enabled": false,
+    "volume": 1
+  },
   "sponsors": [
     {
       "src": "/sponsors/srm.svg",
       "alt": "SRM IST",
-      "size": 40,
+      "size": 35,
       "dark": false
     },
     {
       "src": "/sponsors/whisper_flow.png",
       "alt": "Sponsor 1",
-      "size": 40,
+      "size": 35,
       "dark": true
     },
     {
@@ -40,7 +44,7 @@
     {
       "src": "/sponsors/hackculture.png",
       "alt": "Sponsor 4",
-      "size": 40,
+      "size": 35,
       "dark": true
     },
     {

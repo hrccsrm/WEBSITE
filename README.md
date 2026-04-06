@@ -25,6 +25,10 @@ Location: `src/config/countdown.json`
       "Great ideas start with bold teams."
     ]
   },
+  "audio": {
+    "enabled": true,
+    "volume": 1
+  },
   "sponsors": [
     {
       "src": "/sponsors/logo.png",
@@ -46,6 +50,8 @@ Location: `src/config/countdown.json`
 | `time` | Time in 12-hour AM/PM format (IST) | `"5:00 PM"` |
 | `round` | Current round/phase (shown below timer) | `"Final Round"` |
 | `quotes` | Random quotes shown below round (rotates automatically) | `["Build. Break. Learn. Repeat."]` |
+| `audio.enabled` | Enable/disable 10-second audio | `true` |
+| `audio.volume` | Audio volume (`0` to `1`) | `1` |
 
 ### Date & Time Format
 
